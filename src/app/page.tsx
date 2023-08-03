@@ -27,7 +27,7 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-4">  
                     <div className="col-span-2"/>
-                    <div className="md:col-span-2 col-span-4 mt-4 flex flex-row md:justify-start justify-center">
+                    <div className="md:col-span-2 col-span-4 mt-4 sm:mb-0 mb-10 flex flex-row md:justify-start justify-center">
                         <MotionLink 
                         className="!ml-0"
                         download={true} 

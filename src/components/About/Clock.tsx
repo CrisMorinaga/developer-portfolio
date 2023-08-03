@@ -38,7 +38,7 @@ export default function ClockComponent({handleChange}: Prop) {
                 <DropdownMenuComponent setUserChoice={setUserChoice}>
                     <motion.div 
                     whileHover={{scale:1.2}}
-                    className="flex cursor-pointer absolute right-4 top-2">
+                    className="flex cursor-pointer absolute right-2 top-2">
                         <p className="border rounded-lg border-light p-1 bg-primary text-light select-none">{currentTime}</p>
                     </motion.div>
                 </DropdownMenuComponent>

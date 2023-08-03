@@ -59,7 +59,7 @@ export function FeaturedProject ({ type, title, backend, frontend, database, clo
                             href={github} target="_blank" className="md:w-9 sm:w-7 w-6 dark:bg-light dark:rounded-full"> <GithubIcon/> </GitHubLink>
                             <span>
                                 <MotionLink 
-                                linkText="Visit Project" newTab={true} link={link}/>
+                                linkText="Visit" newTab={true} link={link}/>
                             </span>
                         </div>
                         <Dialog>
