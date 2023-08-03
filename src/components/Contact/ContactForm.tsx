@@ -17,7 +17,10 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { Textarea } from "@/components/ui/textarea"
 import { Toaster } from '@/components/ui/toaster'
+import { SpinnerLoader } from "./Spinner"
+
 import {Button} from "../ButtonAndLink"
+import { useState } from "react"
 
 const accountFormSchema = z.object({
     firstName: z
@@ -48,6 +51,11 @@ const defaultValues: Partial<AccountFormValues> = {
 
 export default function ContactForm() {
 
+    const [ loading, setLoading ] = useState(false);
+    const handleLoading = async () => {
+        setLoading((prevLoading) => !prevLoading)
+    }
+
     const form = useForm<AccountFormValues>({
         mode:'onChange',
         resolver: zodResolver(accountFormSchema),
@@ -57,13 +65,16 @@ export default function ContactForm() {
     async function onSubmit(data: AccountFormValues) {
 
         try {
+            const loadingStarts = await handleLoading()
             const response = await axios.post('/api/submitForm', data);
             if (response.status === 200) {
                 toast({
                     description: 'Your email has been successfully sent.',
                 });
+                const loadingFinishes = await handleLoading()
             }
         } catch (error) {
+            const loadingFinishes = await handleLoading()
             toast({
                 variant: "destructive",
                 title: 'There was a problem with your request',
@@ -133,8 +144,14 @@ export default function ContactForm() {
                         <FormMessage className="text-red-500"/>
                         </FormItem>
                     )}
-                    />     
-                    <Button buttonText="Send"/>
+                    />   
+                    <div className="flex flex-row gap-2">
+                        <Button buttonText="Send"/>
+                        {loading && (
+                            <SpinnerLoader />
+                        )}
+                    </div>  
+                    
                 </form>
             </Form>
             <Toaster />

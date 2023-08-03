@@ -43,6 +43,8 @@ export default function ClockBanner({userDemo}: Prop){
     source = afternoon;
     } else if (hour < 21) {
     source = twilight;
+    } else if (hour >= 21) {
+        source = night;
     }
 
     
@@ -52,12 +54,12 @@ export default function ClockBanner({userDemo}: Prop){
                 <MotionImage 
                 initial={{opacity: 0}}
                 animate={{opacity: 1, transition: {duration: 1}}}
-                priority src={userChoice} alt="test" className="rounded-xl"/>
+                priority src={userChoice} alt="image" className="rounded-xl"/>
             ) : (
                 <MotionImage 
                 initial={{opacity: 0}}
                 animate={{opacity: 1, transition: {duration: 1}}}
-                priority src={source} alt="test" className="rounded-xl"/>
+                priority src={source} alt="image" className="rounded-xl"/>
             )}
         </>
     )

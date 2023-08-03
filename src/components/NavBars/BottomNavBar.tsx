@@ -38,7 +38,7 @@ export default function BottomNavBar() {
                         </motion.a>
 
                         <motion.a 
-                        href={'www.linkedin.com/in/cristopher-morales-c'} 
+                        href={'https://www.linkedin.com/in/cristopher-morales-c'} 
                         target="_blank"
                         whileTap={{scale:0.9}}
                         whileHover={{y:-2}}
