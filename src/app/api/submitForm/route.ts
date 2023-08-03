@@ -3,12 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 const nodemailer = require("nodemailer");
 
 export async function POST(request: NextRequest) {
-
     try {
         const data = await request.json()
-        const name = (data.lastName?.toLowerCase() || '') + ' ' + (data.firstName?.toLowerCase() || '');
-        const email = data.email
-        const content = data.content
+        const name = (data.lastName?.toLowerCase() || '') + ' ' + (data.firstName?.toLowerCase() || '') as string;
+        const email = data.email as string
+        const content = data.content as string        
 
         const transporter = nodemailer.createTransport({
             host : process.env.EMAIL_SERVICE,
@@ -26,7 +25,7 @@ export async function POST(request: NextRequest) {
             text: `Message from: ${name}\nEmail: ${email}\n\n${content}`
         }
 
-        transporter.sendMail(options)
+        await transporter.sendMail(options)
 
         return NextResponse.json({message: 'Works', success: true})
 
