@@ -98,6 +98,6 @@
     }
 
     #splashScreen {
-        @apply bg-splash
+        @apply bg-dark
     }
 }
