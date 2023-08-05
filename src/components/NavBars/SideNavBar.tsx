@@ -26,7 +26,7 @@ export default function SideNavBar({open, handleOpenClose}:Props) {
                     exit={{opacity: 0, x:-200}}
                     transition={{duration: 0.3}}
                     className="md:flex flex-col align-middle hidden fixed top-0 left-0 h-screen w-20 m-0 bg-light dark:bg-dark shadow-lg shadow-dark dark:shadow-light z-10">
-                        <motion.ul className="flex flex-col items-center align-middle gap-16 mt-6">
+                        <motion.ul className="flex flex-col items-center align-middle gap-[58px] mt-6">
                             <motion.li whileHover={{scale: 1.2}}> 
                                 <X className="sidebar-icon dark:stroke-light" onClick={handleOpenClose}/> 
                             </motion.li>

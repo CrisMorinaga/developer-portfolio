@@ -96,4 +96,8 @@
         @apply dark:bg-dark border-light focus:border-light
         ;
     }
+
+    #splashScreen {
+        @apply bg-splash
+    }
 }

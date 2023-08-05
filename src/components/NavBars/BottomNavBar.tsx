@@ -14,7 +14,7 @@ export default function BottomNavBar() {
     return(
         <>
             <div>
-                <div className="absolute top-0 right-0 px-10 py-8 md:hidden">
+                <div className="absolute top-0 right-0 pl-10 pr-4 py-8 md:hidden">
                     <nav className="flex flex-row md:hidden">
                         
                         <motion.a 

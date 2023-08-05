@@ -32,7 +32,7 @@ export default function Home() {
                         className="!ml-0"
                         download={true} 
                         newTab={true} 
-                        link="/" 
+                        link="/Cristopher Morales Resume.pdf" 
                         linkText="Resume"> 
                             <Download className="sm:w-6 sm:h-6 w-4 h-4"/>
                         </MotionLink>

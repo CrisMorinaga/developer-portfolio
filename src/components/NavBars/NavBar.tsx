@@ -42,7 +42,7 @@ export default function NavBar() {
 
     return(
         <> 
-            <div className="w-full lg:px-32 px-10 py-8 font-medium flex items-center justify-between">
+            <div className="w-full lg:pl-32 lg:pr-10 pr px-10 py-8 font-medium flex items-center justify-between">
 
                 <motion.div
                     className="fixed left-5 top-6 md:flex hidden" 

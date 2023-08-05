@@ -16,21 +16,23 @@ export default function TransitionEffect() {
                     <motion.div
                     >
                         <motion.div 
+                        id="splashScreen"
                         key={'left'}
                         initial={{x:'-50%', width: '100%'}}
                         animate={{x:-1000, width: '0%'}}
                         transition={{duration:1.5, ease:'easeInOut'}}
-                        className="fixed top-0 bottom-0 left-0 col-span-1 h-full z-30 bg-splash flex justify-end items-center">
-                            <MotionImage priority src={LeftSideBlack} alt="" className="h-[500px]"/>
+                        className="fixed top-0 bottom-0 left-0 col-span-1 h-full z-30 flex justify-end items-center">
+                            <MotionImage priority  src={LeftSideBlack} alt="Splash screen" className="h-[500px]"/>
                         </motion.div>
 
                         <motion.div 
+                        id="splashScreen"
                         key={'right'}
                         initial={{x:'50%', width: '100%', }}
                         animate={{x:1000, width: '0%', scale: 1.2}}
                         transition={{duration:1.5, ease:'easeInOut'}}
-                        className="fixed top-0 bottom-0 right-0 col-span-1 h-full z-30 bg-splash flex items-center">
-                            <MotionImage priority src={RightSideBlack} alt="" className="h-[500px]"/>
+                        className="fixed top-0 bottom-0 right-0 col-span-1 h-full z-30 flex items-center">
+                            <MotionImage priority src={RightSideBlack} alt="Splash screen" className="h-[500px]"/>
                         </motion.div>
                     </motion.div>
                 </AnimatePresence>
