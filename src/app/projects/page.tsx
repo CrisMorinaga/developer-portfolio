@@ -5,7 +5,7 @@ import {FeaturedProject, Project} from "@/components/Projects/ProjectCards";
 
 import smartbrain from "@/public/Projects/SmartBrain.webp"
 import tictactoe from "@/public/Projects/TicTacToe.webp"
-import chatroom from "@/public/Projects/ChatExample.webp"
+import chatroom from "@/public/Projects/ChatRoom.webp"
 
 const featuredProject = {
     title: 'SmartBrain',
