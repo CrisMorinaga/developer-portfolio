@@ -5,6 +5,7 @@ import {FeaturedProject, Project} from "@/components/Projects/ProjectCards";
 
 import smartbrain from "@/public/Projects/SmartBrain.webp"
 import tictactoe from "@/public/Projects/TicTacToe.webp"
+import chatroom from "@/public/Projects/ChatExample.webp"
 
 const featuredProject = {
     title: 'SmartBrain',
@@ -26,6 +27,14 @@ const project1 = {
     summary: "A Tic-Tac-Toe game build using Pygame with an 3 level difficulty AI.",
     link: "https://github.com/CrisMorinaga/Tic-Tac-Toe",
     github: "https://github.com/CrisMorinaga/Tic-Tac-Toe"
+}
+const project2 = {
+    title: 'Chat Room',
+    img: chatroom,
+    type: "Python/Next.Js 13 Project",
+    summary: "A chat room built using Flask-Socketio and Next js.",
+    link: "https://github.com/CrisMorinaga/ChatRoom",
+    github: "https://github.com/CrisMorinaga/ChatRoom"
 }
 
 export default function Projects() {
@@ -59,6 +68,17 @@ export default function Projects() {
                         type={project1.type}
                         link={project1.link}
                         github={project1.github}
+                        />
+                    </div>
+                    <div 
+                    className="md:col-span-6 col-span-12 m-4">
+                        <Project 
+                        title={project2.title}
+                        img={project2.img}
+                        imgClassName={'lg:!h-auto md:!h-48 sm:!h-36 !h-32 lg:mt-[30%] rounded-xl'}
+                        type={project2.type}
+                        link={project2.link}
+                        github={project2.github}
                         />
                     </div>
                 </div>

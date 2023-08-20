@@ -4,6 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import nextJs from '@/public/Projects/Icons/nextjs.webp'
 import flask from '@/public/Projects/Icons/flask.webp'
 import postgresql from '@/public/Projects/Icons/postgresql.webp'
+import firebase from '@/public/Projects/Icons/firebase.webp'
 import Link from "next/link";
 import { GithubIcon } from "@/components/Home/Icons";
 import { motion } from "framer-motion";
@@ -70,7 +71,8 @@ export function FeaturedProject ({ type, title, backend, frontend, database, clo
                                 className="flex gap-2 cursor-pointer">
                                     <Image src={flask} className="lg:w-9 sm:w-7 w-6 p-1 h-auto dark:rounded-full dark:border dark:bg-light dark:border-light" alt="flask icon"/>
                                     <Image src={nextJs} className="lg:w-9 sm:w-7 w-6 h-auto dark:rounded-full dark:bg-light dark:border dark:border-light " alt="nextjs icon"/>
-                                    <Image src={postgresql} className="lg:w-9 sm:w-7 w-6 h-auto dark:rounded-full dark:border dark:bg-light dark:border-light" alt="postgresql icon"/>
+                                    <Image src={postgresql} className="lg:w-9 sm:w-7 w-6 h-auto dark:rounded-lg dark:border dark:bg-light dark:border-light" alt="postgresql icon"/>
+                                    <Image src={firebase} className="lg:w-9 sm:w-7 w-6 h-auto dark:rounded-full dark:border dark:bg-light dark:border-light" alt="postgresql icon"/>
                                 </motion.div>
                             </div>
                         </DialogTrigger>
@@ -103,9 +105,9 @@ export function Project ({ type, title, img, link, github, imgClassName }: Props
         whileInView={{opacity: 1, y: 0}}
         viewport={{margin: "-50px", once: true}}
         transition={{ease: "easeOut", duration: 1}}
-        className="w-full md:h-auto h-40 flex md:flex-col flex-row overflow-hidden items-center justify-center rounded-2xl border border-solid 
+        className="w-full lg:h-[600px] md:h-[400px] h-40 flex md:flex-col flex-row overflow-hidden justify-between items-center rounded-2xl border border-solid 
         border-dark bg-light dark:bg-dark dark:border-light p-6 relative shadow-xl shadow-dark dark:shadow-light">
-            <Link href={link} target="_blank" className="w-full cursor-pointer overflow-hidden rounded-lg bg-slate-700">
+            <Link href={link} target="_blank" className="w-full cursor-pointer overflow-hidden rounded-lg">
                 <Image priority 
                 src={img} alt={title} className={`w-full h-auto object-cover ${imgClassName}`}/>
             </Link>
