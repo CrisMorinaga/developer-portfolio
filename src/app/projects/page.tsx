@@ -16,7 +16,7 @@ const featuredProject = {
     frontend: ['Next.js 13', 'Tailwind', 'Zod', 'Next-auth', 'Axios', 'Shadcn-UI'],
     database: ['PostgreSQL'],
     cloudStorage: ['Firebase'],
-    link: "https://smartbrai.netlify.app/",
+    link: "https://smartbrai.vercel.app/",
     github: "https://github.com/CrisMorinaga/SmartBrain"
 }
 
