@@ -5,6 +5,7 @@ import nextJs from '@/public/Projects/Icons/nextjs.webp'
 import flask from '@/public/Projects/Icons/flask.webp'
 import postgresql from '@/public/Projects/Icons/postgresql.webp'
 import firebase from '@/public/Projects/Icons/firebase.webp'
+import react from '@/public/Projects/Icons/react.webp'
 import Link from "next/link";
 import { GithubIcon } from "@/components/Home/Icons";
 import { motion } from "framer-motion";
@@ -57,7 +58,9 @@ export function FeaturedProject ({ type, title, backend, frontend, database, clo
                             <GitHubLink 
                             aria-label='GithubProfile'
                             whileHover={{scale: 1.1}}
-                            href={github} target="_blank" className="md:w-9 sm:w-7 w-6 dark:bg-light dark:rounded-full"> <GithubIcon/> </GitHubLink>
+                            href={github} target="_blank" className="md:w-9 sm:w-7 w-6 dark:bg-light dark:rounded-full"> 
+                                <GithubIcon/> 
+                            </GitHubLink>
                             <span>
                                 <MotionLink 
                                 linkText="Visit" newTab={true} link={link}/>
@@ -69,8 +72,8 @@ export function FeaturedProject ({ type, title, backend, frontend, database, clo
                                 <motion.div 
                                 whileHover={{scale: 1.1}} 
                                 className="flex gap-2 cursor-pointer">
+                                    <Image src={react} className="lg:w-9 sm:w-7 w-6 p-1 h-auto dark:rounded-full dark:border  dark:border-light" alt="react icon"/>
                                     <Image src={flask} className="lg:w-9 sm:w-7 w-6 p-1 h-auto dark:rounded-full dark:border dark:bg-light dark:border-light" alt="flask icon"/>
-                                    <Image src={nextJs} className="lg:w-9 sm:w-7 w-6 h-auto dark:rounded-full dark:bg-light dark:border dark:border-light " alt="nextjs icon"/>
                                     <Image src={postgresql} className="lg:w-9 sm:w-7 w-6 h-auto dark:rounded-lg dark:border dark:bg-light dark:border-light" alt="postgresql icon"/>
                                     <Image src={firebase} className="lg:w-9 sm:w-7 w-6 h-auto dark:rounded-full dark:border dark:bg-light dark:border-light" alt="postgresql icon"/>
                                 </motion.div>

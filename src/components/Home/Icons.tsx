@@ -64,5 +64,5 @@ export
 {
     GithubIcon,
     YoutubeIcon,
-    LinkedinIcon
+    LinkedinIcon,
 }

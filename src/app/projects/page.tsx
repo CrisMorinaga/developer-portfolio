@@ -13,7 +13,7 @@ const featuredProject = {
     type: "Featured Project",
     summary: "A website that uses Clarifai API to scan an image and detect faces on it.",
     backend: ['Clarifai','Flask', 'SQLAlchemy', 'Flask-login', 'Werkzeug Security'],
-    frontend: ['Next.js 13', 'Tailwind', 'Zod', 'Next-auth', 'Axios', 'Shadcn-UI'],
+    frontend: ['React', 'Next.js 13', 'Tailwind', 'Zod', 'Next-auth', 'Axios', 'Shadcn-UI'],
     database: ['PostgreSQL'],
     cloudStorage: ['Firebase'],
     link: "https://smartbrai.vercel.app/",
@@ -31,8 +31,8 @@ const project1 = {
 const project2 = {
     title: 'Chat Room',
     img: chatroom,
-    type: "Python/Next.Js 13 Project",
-    summary: "A chat room built using Flask-Socketio and Next js.",
+    type: "Python - React/Next.Js 13 Project",
+    summary: "A chat room built using Flask-Socketio and React/Next.js.",
     link: "https://github.com/CrisMorinaga/ChatRoom",
     github: "https://github.com/CrisMorinaga/ChatRoom"
 }
