@@ -83,7 +83,7 @@ export default function NavBar() {
                         </motion.a>
 
                         <motion.a 
-                        href={'https://www.linkedin.com/in/cristopher-morales-c'} 
+                        href={'https://www.linkedin.com/in/morales-cristopher'} 
                         target="_blank"
                         whileTap={{scale:0.9}}
                         whileHover={{y:-2}}
