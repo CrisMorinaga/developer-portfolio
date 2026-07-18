@@ -1,161 +1,214 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import axios from "axios"
+import { FormEvent, useState } from "react";
+import { ArrowUpRight, Check, Loader } from "lucide-react";
 
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/use-toast"
-import { Textarea } from "@/components/ui/textarea"
-import { Toaster } from '@/components/ui/toaster'
-import { SpinnerLoader } from "./Spinner"
+type FormStatus = "idle" | "sending" | "success" | "error";
 
-import {Button} from "../ButtonAndLink"
-import { useState } from "react"
+export function ContactForm() {
+	const [status, setStatus] = useState<FormStatus>("idle");
+	const [errorMessage, setErrorMessage] = useState("");
 
-const accountFormSchema = z.object({
-    firstName: z
-        .string()
-        .min(1, {message: "Required"})
-        .max(30, {message: "Please don't go over 30 characters"}),
-    lastName: z 
-        .string()
-        .min(1, {message: "Required"})
-        .max(30, {message: "Please don't go over 30 characters"}),
-    email: z
-        .string()
-        .email({message: "Please use a valid email"}),
-    content: z
-        .string()
-        .min(1, {message: "Write me something :)"})
-        .max(300, {message: "Please don't go over 40 characters"})
-})
+	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 
-type AccountFormValues = z.infer<typeof accountFormSchema>
+		const form = event.currentTarget;
+		const formData = new FormData(form);
 
-const defaultValues: Partial<AccountFormValues> = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    content: ""
+		setStatus("sending");
+		setErrorMessage("");
+
+		try {
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					name: formData.get("name"),
+					email: formData.get("email"),
+					message: formData.get("message"),
+					website: formData.get("website"), // Honeypot
+				}),
+			});
+
+			if (!response.ok) {
+				throw new Error("The message could not be sent.");
+			}
+
+			form.reset();
+			setStatus("success");
+		} catch (error) {
+			setStatus("error");
+			setErrorMessage(
+				error instanceof Error
+					? error.message
+					: "Something went wrong. Please try again.",
+			);
+		}
+	};
+
+	return (
+		<form
+			onSubmit={handleSubmit}
+			className="w-full"
+		>
+			<div className="space-y-4">
+				<FormField
+					id="name"
+					label="Name"
+					placeholder="Your name"
+					autoComplete="name"
+					minLength={2}
+					maxLength={80}
+				/>
+
+				<FormField
+					id="email"
+					label="Email"
+					type="email"
+					placeholder="you@example.com"
+					autoComplete="email"
+					maxLength={254}
+				/>
+
+				<div>
+					<label
+						htmlFor="message"
+						className="block text-sm font-semibold text-foreground"
+					>
+						Message
+					</label>
+
+					<textarea
+						id="message"
+						name="message"
+						required
+						minLength={10}
+						maxLength={3000}
+						placeholder="Write your message..."
+						className="
+              mt-3 min-h-15 w-full resize-y
+              border-0 border-b border-border
+              bg-transparent px-0 py-3
+              text-foreground outline-none
+              transition-colors duration-200
+              placeholder:text-muted-foreground/70
+              focus:border-primary
+            "
+					/>
+				</div>
+
+				{/* Campo invisible para bloquear bots simples */}
+				<div
+					aria-hidden="true"
+					className="absolute -left-[9999px]"
+				>
+					<label htmlFor="website">Website</label>
+					<input
+						id="website"
+						name="website"
+						type="text"
+						tabIndex={-1}
+						autoComplete="off"
+					/>
+				</div>
+			</div>
+
+			<div className="mt-7">
+				<button
+					type="submit"
+					disabled={status === "sending"}
+					className={`d-btn d-btn-md d-btn-primary flex gap-1 rounded-lg font-normal text-foreground hover:bg-[#b47440] hover:border-[#b47440]`}
+				>
+					{status === "sending" ? (
+						<>
+							<Loader className="size-5 animate-spin" />
+							Sending...
+						</>
+					) : status === "success" ? (
+						<>
+							<Check className="size-5" />
+							Message sent
+						</>
+					) : (
+						<>
+							Send message
+							<ArrowUpRight className="size-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+						</>
+					)}
+				</button>
+
+				<p className="mt-4 text-sm text-muted-foreground">
+					Your details are only used to reply to this message.
+				</p>
+
+				<div
+					aria-live="polite"
+					className="mt-3 min-h-6 text-sm"
+				>
+					{status === "success" && (
+						<p className="text-primary">
+							Thanks! Your message has been sent.
+						</p>
+					)}
+
+					{status === "error" && (
+						<p className="text-destructive">{errorMessage}</p>
+					)}
+				</div>
+			</div>
+		</form>
+	);
 }
 
-export default function ContactForm() {
+type FormFieldProps = {
+	id: string;
+	label: string;
+	type?: "text" | "email";
+	placeholder: string;
+	autoComplete?: string;
+	minLength?: number;
+	maxLength?: number;
+};
 
-    const [ loading, setLoading ] = useState(false);
-    const handleLoading = async () => {
-        setLoading((prevLoading) => !prevLoading)
-    }
+function FormField({
+	id,
+	label,
+	type = "text",
+	placeholder,
+	autoComplete,
+	minLength,
+	maxLength,
+}: FormFieldProps) {
+	return (
+		<div>
+			<label
+				htmlFor={id}
+				className="block text-sm font-semibold text-foreground"
+			>
+				{label}
+			</label>
 
-    const form = useForm<AccountFormValues>({
-        mode:'onChange',
-        resolver: zodResolver(accountFormSchema),
-        defaultValues,
-    })
-
-    async function onSubmit(data: AccountFormValues) {
-
-        try {
-            const loadingStarts = await handleLoading()
-            const response = await axios.post('/api/submitForm', data);
-            if (response.status === 200) {
-                toast({
-                    description: 'Your email has been successfully sent.',
-                });
-                const loadingFinishes = await handleLoading()
-            }
-        } catch (error) {
-            const loadingFinishes = await handleLoading()
-            toast({
-                variant: "destructive",
-                title: 'There was a problem with your request',
-                description: "Something went wrong and we couldn't send your message, please try again.",
-            })
-            return
-        }
-    }
-
-    return (
-        <>
-            <Form {...form}>
-                <form 
-                method="POST" 
-                onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                    <div className="flex gap-3">
-                        <FormField
-                            control={form.control}
-                            name="firstName"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-dark dark:text-light">First Name</FormLabel>
-                                    <FormControl>
-                                        <Input className="form-input" placeholder={'John'} {...field} />
-                                    </FormControl>
-                                    <FormMessage className=" text-red-500"/>
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="lastName"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-dark dark:text-light">Last Name</FormLabel>
-                                    <FormControl>
-                                        <Input className="form-input" placeholder={'Smith'} {...field} />
-                                    </FormControl>
-                                    <FormMessage className="text-red-500"/>
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-
-                    <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className=" text-dark dark:text-light">Email</FormLabel>
-                        <FormControl>
-                            <Input autoComplete='username' className="form-input" placeholder={"email@mail.com"} {...field} />
-                        </FormControl>
-                        <FormMessage className=" text-red-500"/>
-                        </FormItem>
-                    )}
-                    />          
-                    <FormField
-                    control={form.control}
-                    name="content"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className=" text-dark dark:text-light">Message</FormLabel>
-                        <FormControl>
-                            <Textarea placeholder="Type your message here." {...field} />
-                        </FormControl>
-                        <FormMessage className="text-red-500"/>
-                        </FormItem>
-                    )}
-                    />   
-                    <div className="flex flex-row gap-2">
-                        <Button buttonText="Send"/>
-                        {loading && (
-                            <SpinnerLoader />
-                        )}
-                    </div>  
-                    
-                </form>
-            </Form>
-            <Toaster />
-        </>
-
-    )
+			<input
+				id={id}
+				name={id}
+				type={type}
+				required
+				minLength={minLength}
+				maxLength={maxLength}
+				autoComplete={autoComplete}
+				placeholder={placeholder}
+				className="
+          mt-3 w-full
+          border-0 border-b border-border
+          bg-transparent px-0 py-3
+          text-foreground outline-none
+          transition-colors duration-200
+          placeholder:text-muted-foreground/70
+          focus:border-primary
+        "
+			/>
+		</div>
+	);
 }

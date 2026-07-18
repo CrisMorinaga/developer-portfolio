@@ -1,59 +1,81 @@
-'use client'
-import AnimatedText from "@/components/AnimatedText";
-import Layout from "@/components/Layout";
-import { Separator } from "@/components/ui/separator";
-import ClockComponent from "@/components/About/Clock";
-import ClockBanner from "@/components/About/ClockBanner";
-import { useState } from "react";
+"use client";
+import { TimeScene } from "@/components/About/TimeScene";
+
+const info = [
+	{ title: "BASED IN", description: "Japan" },
+	{ title: "LANGUAGES", description: "Spanish • English • Japanese" },
+	{
+		title: "CERTIFICATION",
+		description: "Fundamental Information Technology Engineer Examination",
+	},
+	{ title: "CURRENTLY", description: "Building RSTavern" },
+];
 
 export default function About() {
+	return (
+		<div className="flex w-full min-w-screen flex-col item-center justify-center lg:px-30 px-15 sm:py-10 py-5 sm:pt-10 pt-0">
+			<section className="flex md:flex-row flex-col md:gap-4 gap-10 items-center justify-center py-5">
+				<div className="flex-1 font-display leading-relaxed">
+					<p className="text-primary lg:text-xl md:text-lg md:text-start text-center">
+						About me
+					</p>
+					<p className="lg:text-6xl text-5xl md:text-start text-center">
+						Music came first.
+					</p>
+					<p className="lg:text-6xl text-5xl md:text-start text-center">
+						Software came later.
+					</p>
+				</div>
+				<div className="flex-1 flex flex-col gap-5">
+					<div className="flex flex-col gap-4 lg:text-base text-sm md:text-start text-center">
+						<p>
+							{`I'm a Chilean full-stack developer based in Japan.
+              Before moving into software, I trained as a pianist and
+              worked in music education. `}
+						</p>
+						<p>
+							I began programming in 2023 and now work primarily
+							with TypeScript, React, Next.js, and backend
+							services. My recent work includes RSTavern, a
+							context-aware RuneScape companion.
+						</p>
+					</div>
 
-    const [ userDemo, setUserDemo ] = useState('');
+					<div className="flex flex-col">
+						{info.map((info, i) => (
+							<div key={i}>
+								<div className="d-divider m-0" />
+								<div className="flex items-center justify-start gap-2 lg:text-sm text-xs">
+									<p className="flex-1 text-muted-foreground flex-wrap">
+										{info.title}
+									</p>
+									<p className="flex-1/2 flex-wrap">
+										{info.description}
+									</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
 
-    const handleChange = (userChoice='') => {
-        setUserDemo(userChoice)
-    }
+			<div className="d-divider" />
 
-    return (
-        <>
-            <div className="flex w-full min-w-screen flex-col item-center justify-center px-4">
-                <Layout className="pt-16">
-                    <AnimatedText text="A Pianist's Journey into Coding"/>
-                    <div className="flex flex-col text-justify sm:pb-0 pb-28">
-                        <h2 className="mb-5 text-lg font-bold uppercase text-dark/75 dark:text-light/75"> 
-                            {  
-                                "Biography"
-                            }
-                        </h2>
-
-                        <p className="mb-4">
-                            {
-                                `Hello, nice to meet you! My name is Cristopher Morales and I'm a developer from Chile.`
-                            } 
-                        </p>
-
-                        <p className="mb-4">
-                            {
-                                `Since school, I always had an interest in studying something related to coding and computer 
-                                science (I've always loved gaming and computers) but never tried to give the first steps toward it. 
-                                But after seeing the recent explosion in AI with OpenAI and chatGPT-4, that interest came back to me.`
-                            } 
-                        </p>
-
-                        <p className="">
-                            {
-                                `In Chile, I pursued my first passion which is music. But now, here in Japan, I'm pursuing my second passion which is coding! 
-                                Hope you find my portfolio interesting. Have a good day :)`
-                            }
-                        </p>
-                        <Separator className="my-2 bg-dark/30 dark:bg-light/30"/>
-                        <div className="col-span-8 mt-2 relative">
-                            <ClockComponent handleChange={handleChange}/>
-                            <ClockBanner userDemo={userDemo}/>
-                        </div>
-                    </div>
-                </Layout>
-            </div>
-        </>
-    )
+			<section className="flex md:flex-row flex-col gap-2">
+				<div className="flex flex-col flex-1 md:text-start text-center">
+					<p className="text-primary lg:text-base text-sm">
+						A small corner of the site
+					</p>
+					<p className="lg:text-2xl text-xl">
+						Meanwhile, somewhere in Japan...
+					</p>
+					<p className="text-muted-foreground lg:text-base text-sm">
+						This little scene changes throught the day. Try pressing
+						the clock!
+					</p>
+				</div>
+				<TimeScene />
+			</section>
+		</div>
+	);
 }

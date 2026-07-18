@@ -1,47 +1,55 @@
-import NavBar from '@/components/NavBars/NavBar'
-import { Montserrat } from 'next/font/google'
-import Footer from '@/components/Footer'
-import Providers from '@/components/Providers'
-import BottomNavBar from '@/components/NavBars/BottomNavBar'
-import Logo from '@/components/Logo'
-import TransitionEffect from '@/components/TransitionEffect'
+import { Montserrat, DM_Serif_Display } from "next/font/google";
 
-import './globals.css'
-import type { Metadata } from 'next'
+import NavBar from "@/components/NavBars/NavBar";
+import Footer from "@/components/Footer";
+import Providers from "@/components/Providers";
+import BottomNavBar from "@/components/NavBars/BottomNavBar";
+import SplashScreen from "@/components/SplashScreen";
 
-const montserrat = Montserrat({ 
-        subsets: ['latin'],
-        variable: '--font-mont' 
-})
+import type { Metadata } from "next";
+
+import "./globals.css";
+
+const montserrat = Montserrat({
+	subsets: ["latin"],
+	variable: "--font-mont",
+});
+
+const dmSerif = DM_Serif_Display({
+	subsets: ["latin"],
+	weight: "400",
+	variable: "--font-dm-serif",
+});
 
 export const metadata: Metadata = {
-    title: `Cristopher's Portfolio`,
-    description: 'Created using Next js',
-}
+	title: `Cristopher's Portfolio`,
+	description: "Created using Next js",
+};
 
 export default function RootLayout({
-    children,
+	children,
 }: {
-    children: React.ReactNode
+	children: React.ReactNode;
 }) {
-
-    return (
-        <>  
-            <html lang="en" suppressHydrationWarning={true}>
-            <body
-            suppressHydrationWarning={true}
-            className={`${montserrat.variable} 
-            font-mont bg-light w-full min-h-screen dark:bg-dark`} >
-                <Providers>
-                    <TransitionEffect />
-                    <Logo />
-                    <NavBar />
-                    {children}
-                    <Footer />
-                    <BottomNavBar />
-                </Providers>
-            </body>
-            </html>
-        </>
-    )
+	return (
+		<>
+			<html
+				lang="en"
+				suppressHydrationWarning
+			>
+				<body
+					suppressHydrationWarning
+					className={`${montserrat.variable} ${dmSerif.variable}
+            font-mont bg-light w-full min-h-screen dark:bg-dark`}
+				>
+					<Providers>
+						<SplashScreen />
+						<NavBar />
+						{children}
+						<Footer />
+					</Providers>
+				</body>
+			</html>
+		</>
+	);
 }

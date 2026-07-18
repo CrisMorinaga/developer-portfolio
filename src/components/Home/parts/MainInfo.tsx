@@ -1,0 +1,35 @@
+import Link from "next/link";
+
+import { ArrowRight, Download } from "lucide-react";
+
+export default function MainInfo() {
+	return (
+		<div className="flex flex-col gap-4 flex-1 items-center justify-center sm:px-7 px-2 max-[1100px]:text-center">
+			<p className="md:text-base text-sm leading-relaxed text-muted-foreground ">
+				I build full-stack web applications with TypeScript, React, and
+				Next.js, with a particular interest in front-end systems and
+				reliable AI integrations.
+			</p>
+			<div className="flex gap-4 items-center justify-start w-full">
+				<Link
+					href={"/projects"}
+					className={`d-btn d-btn-md d-btn-primary hover:bg-[#b47440] hover:border-[#b47440] flex flex-1 gap-1 border font-normal text-white`}
+				>
+					<p>View projects</p>
+					<ArrowRight className="size-5" />
+				</Link>
+				<Link
+					href={"/Cristopher Morales Resume.pdf"}
+					target="_blank"
+					className={`d-btn d-btn-md border d-btn-ghost flex flex-1 gap-1 rounded-lg font-normal border-muted-foreground text-foreground`}
+				>
+					<p>Resume</p>
+					<Download />
+				</Link>
+			</div>
+			<p className="text-muted-foreground self-start max-[1100px]:self-center">
+				Former music educator · FE certified
+			</p>
+		</div>
+	);
+}

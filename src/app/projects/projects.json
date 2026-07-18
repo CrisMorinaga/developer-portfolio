@@ -1,0 +1,28 @@
+[
+	{
+		"title": "'SmartBrain'",
+		"img": "smartbrain",
+		"type": "Featured Project",
+		"summary": "A website that uses Clarifai API to scan an image and detect faces on it.",
+		"backend": [
+			"Clarifai",
+			"'Flask'",
+			"'SQLAlchemy'",
+			"'Flask-login'",
+			"'Werkzeug Security'"
+		],
+		"frontend": [
+			"'React'",
+			"'Next.js 13'",
+			"'Tailwind'",
+			"'Zod'",
+			"'Next-auth'",
+			"'Axios'",
+			"'Shadcn-UI'"
+		],
+		"database": ["'PostgreSQL'"],
+		"cloudStorage": ["'Firebase'"],
+		"link": "https://smartbrai.vercel.app/",
+		"github": "https://github.com/CrisMorinaga/SmartBrain"
+	}
+]
