@@ -60,7 +60,7 @@ export function PresentationSection() {
 					<section className="max-w-4xl">
 						<div className="flex justify-start">
 							<Image
-								src={"/Projects/rstavern/logotext.png"}
+								src={"/projects/rstavern/logotext.png"}
 								className="md:w-[400px] h-auto w-[300px] pointer-events-none select-none"
 								alt="rstavern-logo"
 								width={400}
@@ -92,7 +92,7 @@ export function PresentationSection() {
 			<section className="w-full">
 				<div className="flex justify-center w-full">
 					<Image
-						src={"/Projects/rstavern/rstavern.png"}
+						src={"/projects/rstavern/rstavern.png"}
 						alt="rstavern-logo"
 						width={150}
 						height={150}

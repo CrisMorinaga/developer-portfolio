@@ -8,41 +8,6 @@ import { CallToActionButton } from "@/components/ui/CallToActionButton";
 
 import { Calendar } from "lucide-react";
 
-import smartbrain from "@/public/Projects/SmartBrain.webp";
-import tictactoe from "@/public/Projects/TicTacToe.webp";
-import chatroom from "@/public/Projects/ChatRoom.webp";
-
-// const featuredProject = {
-//     title: 'SmartBrain',
-//     img: smartbrain,
-//     type: "Featured Project",
-//     summary: "A website that uses Clarifai API to scan an image and detect faces on it.",
-//     backend: ['Clarifai','Flask', 'SQLAlchemy', 'Flask-login', 'Werkzeug Security'],
-//     frontend: ['React', 'Next.js 13', 'Tailwind', 'Zod', 'Next-auth', 'Axios', 'Shadcn-UI'],
-//     database: ['PostgreSQL'],
-//     cloudStorage: ['Firebase'],
-//     link: "https://smartbrai.vercel.app/",
-//     github: "https://github.com/CrisMorinaga/SmartBrain"
-// }
-
-const project1 = {
-	title: "AI Tic-Tac-Toe",
-	img: tictactoe,
-	type: "Python Project",
-	summary:
-		"A Tic-Tac-Toe game build using Pygame with an 3 level difficulty AI.",
-	link: "https://github.com/CrisMorinaga/Tic-Tac-Toe",
-	github: "https://github.com/CrisMorinaga/Tic-Tac-Toe",
-};
-const project2 = {
-	title: "Chat Room",
-	img: chatroom,
-	type: "Python - React/Next.Js 13 Project",
-	summary: "A chat room built using Flask-Socketio and React/Next.js.",
-	link: "https://github.com/CrisMorinaga/ChatRoom",
-	github: "https://github.com/CrisMorinaga/ChatRoom",
-};
-
 const technologiesArr = [
 	"Next.js",
 	"TypeScript",
@@ -83,7 +48,7 @@ export default function Projects() {
 					<section className="max-w-4xl">
 						<div className="flex justify-start">
 							<Image
-								src={"/Projects/rstavern/logotext.png"}
+								src={"/projects/rstavern/logotext.png"}
 								className="md:w-[250px] h-auto w-[250px] pointer-events-none select-none"
 								alt="rstavern-logo"
 								width={400}
