@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import LeftSideBlack from "@/public/SplashScreen/LeftSideBlack.webp";
 import RightSideBlack from "@/public/SplashScreen/RightSideBlack.webp";

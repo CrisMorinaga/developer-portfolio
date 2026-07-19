@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+
+import { motion } from "motion/react";
+
 import LogoBlack from "@/public/CrisMorinagaBlack.webp";
 import LogoWhite from "@/public/CrisMorinagaWhite.webp";
 

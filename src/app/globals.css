@@ -19,6 +19,7 @@
 
 @theme inline {
 	--font-display: var(--font-dm-serif);
+	--font-mont: var(--font-montserrat);
 
 	--color-background: hsl(var(--background));
 	--color-foreground: hsl(var(--foreground));

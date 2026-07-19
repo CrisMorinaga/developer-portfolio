@@ -6,12 +6,10 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu } from "lucide-react";
 
-import { Separator } from "@/components/ui/separator";
 import ThemeButton from "../DarkThemeButton";
 import SideNavBar from "./SideNavBar";
 
 import { GithubIcon, LinkedinIcon, YoutubeIcon } from "../Home/Icons";
-import Logo from "./Logo";
 
 interface CustomLinkProps {
 	href: string;
@@ -134,8 +132,6 @@ export default function NavBar() {
 					</nav>
 				</div>
 			</div>
-
-			<Separator className="bg-dark/30 dark:bg-light/30 sm:flex hidden" />
 		</>
 	);
 }

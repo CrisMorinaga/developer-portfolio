@@ -12,7 +12,7 @@ import "./globals.css";
 
 const montserrat = Montserrat({
 	subsets: ["latin"],
-	variable: "--font-mont",
+	variable: "--font-montserrat",
 });
 
 const dmSerif = DM_Serif_Display({

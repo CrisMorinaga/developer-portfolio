@@ -1,4 +1,5 @@
 import { getRateLimitIdentifier, ratelimit } from "@/rate-limit/EmailRateLimit";
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
 		 * Respondemos como si hubiera funcionado para no dar pistas al bot.
 		 */
 		if (website) {
-			return Response.json({ success: true });
+			return NextResponse.json({ success: true });
 		}
 
 		if (
@@ -46,7 +47,7 @@ export async function POST(request: Request) {
 			message.length < 10 ||
 			message.length > 3000
 		) {
-			return Response.json(
+			return NextResponse.json(
 				{
 					success: false,
 					message: "Invalid form data.",
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
 		}
 
 		if (!process.env.CONTACT_EMAIL || !process.env.CONTACT_FROM) {
-			return Response.json(
+			return NextResponse.json(
 				{
 					success: false,
 					message: "Email service is unavailable.",
@@ -75,7 +76,7 @@ export async function POST(request: Request) {
 				Math.ceil((reset - Date.now()) / 1000),
 			);
 
-			return Response.json(
+			return NextResponse.json(
 				{
 					success: false,
 					message: "Too many messages. Please try again later.",
@@ -99,7 +100,7 @@ export async function POST(request: Request) {
 		});
 
 		if (error) {
-			return Response.json(
+			return NextResponse.json(
 				{
 					success: false,
 					message: "The message could not be sent.",
@@ -108,13 +109,13 @@ export async function POST(request: Request) {
 			);
 		}
 
-		return Response.json({
+		return NextResponse.json({
 			success: true,
 			message: "Message sent.",
 			id: data?.id,
 		});
 	} catch {
-		return Response.json(
+		return NextResponse.json(
 			{
 				success: false,
 				message: "The message could not be sent.",

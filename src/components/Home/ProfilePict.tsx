@@ -3,7 +3,7 @@
 import Developer from "@/public/Home/developer.webp";
 import Pianist from "@/public/Home/pianist.webp";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 const ImageMotion = motion(Image);
