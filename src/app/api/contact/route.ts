@@ -1,38 +1,125 @@
-import { NextRequest, NextResponse } from "next/server";
+import { getRateLimitIdentifier, ratelimit } from "@/rate-limit/EmailRateLimit";
+import { Resend } from "resend";
 
-const nodemailer = require("nodemailer");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request: NextRequest) {
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type ContactRequest = {
+	name?: unknown;
+	email?: unknown;
+	message?: unknown;
+	website?: unknown;
+};
+
+export async function POST(request: Request) {
 	try {
-		const data = await request.json();
-		const name = data.name as string;
-		const email = data.email as string;
-		const content = data.message as string;
+		const body = (await request.json()) as ContactRequest;
 
-		const transporter = nodemailer.createTransport({
-			host: process.env.EMAIL_SERVICE,
-			port: 587,
-			auth: {
-				user: process.env.EMAIL_USERNAME,
-				pass: process.env.EMAIL_PASSWORD,
+		const name = typeof body.name === "string" ? body.name.trim() : "";
+
+		const email =
+			typeof body.email === "string"
+				? body.email.trim().toLowerCase()
+				: "";
+
+		const message =
+			typeof body.message === "string" ? body.message.trim() : "";
+
+		const website =
+			typeof body.website === "string" ? body.website.trim() : "";
+
+		/*
+		 * Honeypot:
+		 * los usuarios reales nunca completan este campo.
+		 * Respondemos como si hubiera funcionado para no dar pistas al bot.
+		 */
+		if (website) {
+			return Response.json({ success: true });
+		}
+
+		if (
+			name.length < 2 ||
+			name.length > 80 ||
+			!EMAIL_PATTERN.test(email) ||
+			email.length > 254 ||
+			message.length < 10 ||
+			message.length > 3000
+		) {
+			return Response.json(
+				{
+					success: false,
+					message: "Invalid form data.",
+				},
+				{ status: 400 },
+			);
+		}
+
+		if (!process.env.CONTACT_EMAIL || !process.env.CONTACT_FROM) {
+			return Response.json(
+				{
+					success: false,
+					message: "Email service is unavailable.",
+				},
+				{ status: 500 },
+			);
+		}
+
+		const identifier = getRateLimitIdentifier(request);
+
+		const { success, reset } = await ratelimit.limit(identifier);
+
+		if (!success) {
+			const retryAfter = Math.max(
+				1,
+				Math.ceil((reset - Date.now()) / 1000),
+			);
+
+			return Response.json(
+				{
+					success: false,
+					message: "Too many messages. Please try again later.",
+				},
+				{
+					status: 429,
+					headers: {
+						"Retry-After": retryAfter.toString(),
+					},
+				},
+			);
+		}
+
+		const { data, error } = await resend.emails.send({
+			from: process.env.CONTACT_FROM,
+			to: [process.env.CONTACT_EMAIL],
+			replyTo: email,
+
+			subject: "New portfolio message",
+			text: [`Name: ${name}`, `Email: ${email}`, "", message].join("\n"),
+		});
+
+		if (error) {
+			return Response.json(
+				{
+					success: false,
+					message: "The message could not be sent.",
+				},
+				{ status: 500 },
+			);
+		}
+
+		return Response.json({
+			success: true,
+			message: "Message sent.",
+			id: data?.id,
+		});
+	} catch {
+		return Response.json(
+			{
+				success: false,
+				message: "The message could not be sent.",
 			},
-		});
-
-		const options = {
-			from: `Contact Page ${process.env.EMAIL_USERNAME}`,
-			to: process.env.EMAIL_USERNAME,
-			subject: "Someone is interested in your Portfolio!",
-			text: `Message from: ${name}\nEmail: ${email}\n\n${content}`,
-		};
-
-		await transporter.sendMail(options);
-
-		return NextResponse.json({ message: "Works", success: true });
-	} catch (error) {
-		return NextResponse.json({
-			message: "There was an error.",
-			error: error,
-			success: false,
-		});
+			{ status: 500 },
+		);
 	}
 }

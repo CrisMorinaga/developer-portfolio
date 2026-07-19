@@ -7,7 +7,7 @@ const technologyGroups = [
 	},
 	{
 		title: "Data and retrieval",
-		items: ["Supabase", "PostgreSQL", "Redis", "OpenAI API"],
+		items: ["Supabase", "PostgreSQL", "Upstash", "Redis", "OpenAI API"],
 	},
 	{
 		title: "Authentication and delivery",
@@ -23,7 +23,7 @@ export function TechnologiesSection() {
 					eyebrow="06 · Technologies"
 					title="Stack"
 					description={[
-						"Each tool supports a specific part of the application, from retrieval and persistence to authentication and streaming.",
+						"From streaming and authentication to retrieval and persistence, each tool supports a certain aspect of the application.",
 					]}
 				/>
 

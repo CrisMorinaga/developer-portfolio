@@ -84,7 +84,7 @@ export default function Projects() {
 						<div className="flex justify-start">
 							<Image
 								src={"/Projects/rstavern/logotext.png"}
-								className="md:w-[250px] h-auto w-[250px]"
+								className="md:w-[250px] h-auto w-[250px] pointer-events-none select-none"
 								alt="rstavern-logo"
 								width={400}
 								height={400}

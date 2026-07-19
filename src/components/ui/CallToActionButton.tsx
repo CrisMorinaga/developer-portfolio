@@ -16,16 +16,16 @@ export function CallToActionButton({
 	return (
 		<Link
 			href={href}
-			className={`${className} d-btn d-btn-md d-btn-ghost flex gap-1 border border-muted-foreground text-foreground font-normal`}
+			className={`${className} items-center d-btn d-btn-md d-btn-ghost flex gap-1 border border-muted-foreground text-foreground font-normal`}
 		>
 			{direction === "right" ? (
 				<>
 					{btnTitle}
-					<ArrowRight className="size-5" />
+					<ArrowRight className="size-4" />
 				</>
 			) : (
 				<>
-					<ArrowLeft className="size-5" /> {btnTitle}
+					<ArrowLeft className="size-4" /> {btnTitle}
 				</>
 			)}
 		</Link>

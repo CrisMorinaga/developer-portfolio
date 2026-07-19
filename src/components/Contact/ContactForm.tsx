@@ -33,7 +33,20 @@ export function ContactForm() {
 			});
 
 			if (!response.ok) {
-				throw new Error("The message could not be sent.");
+				const data = await response.json();
+
+				const message = data.message as string;
+
+				switch (message) {
+					case "Invalid form data.":
+						throw new Error(
+							"Something went wrong. Please be sure to fill each field correctly.",
+						);
+					case "Too many messages. Please try again later.":
+						throw new Error(message);
+					default:
+						throw new Error("The message could not be sent.");
+				}
 			}
 
 			form.reset();

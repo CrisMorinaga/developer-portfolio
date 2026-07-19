@@ -13,7 +13,7 @@ export function MainPresentation() {
 					style={{
 						WebkitTextStroke: "1px hsl(var(--foreground))",
 					}}
-					className="absolute font-display text-transparent text-[270px] -top-30 opacity-20 max-[1100px]:hidden"
+					className="absolute select-none pointer-events-none font-display text-transparent text-[270px] -top-30 opacity-20 max-[1100px]:hidden"
 				>
 					C
 				</p>
@@ -21,7 +21,7 @@ export function MainPresentation() {
 					style={{
 						WebkitTextStroke: "1px hsl(var(--foreground))",
 					}}
-					className="absolute font-display text-transparent text-[270px] -bottom-30 right-20 opacity-20 max-[1100px]:hidden"
+					className="absolute select-none pointer-events-none font-display text-transparent text-[270px] -bottom-30 right-20 opacity-20 max-[1100px]:hidden"
 				>
 					M
 				</p>

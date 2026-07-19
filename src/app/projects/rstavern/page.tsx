@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 
 import {
 	ProblemSection,
@@ -12,7 +11,6 @@ import {
 	PresentationSection,
 } from "@/components/Projects/rstavern/caseStudySections";
 import { LiveAppButton } from "@/components/ui/LiveAppButton";
-import { ArrowLeft } from "lucide-react";
 import { CallToActionButton } from "@/components/ui/CallToActionButton";
 
 const walkthroughVideos = [
@@ -40,6 +38,14 @@ const walkthroughVideos = [
 			"Every response might suggest follow-ups to the current query.",
 		ariaLabel:
 			"User selects the follow up question: 'Where do I start the quest?'.",
+	},
+	{
+		mp4Src: "/projects/rstavern/videos/Branching.mp4",
+		poster: "/projects/rstavern/videos/BranchingPoster.webp",
+		title: "Editing a message and navigating branches",
+		description:
+			"Editing a message creates a new independent branch to use.",
+		ariaLabel: "User edits an existing message and creates a new branch",
 	},
 ];
 

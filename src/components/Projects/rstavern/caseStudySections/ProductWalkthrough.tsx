@@ -17,7 +17,7 @@ export function ProductWalkthrough({ videos }: ProductWalkthroughProps) {
 		<section className="mx-auto max-w-5xl px-6 py-24 lg:px-12">
 			<SectionHeading
 				eyebrow="05 · Interface"
-				title="Product walkthrough"
+				title="Project walkthrough"
 			/>
 
 			<div className="space-y-16">

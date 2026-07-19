@@ -1,5 +1,6 @@
 "use client";
 import { TimeScene } from "@/components/About/TimeScene";
+import { Music } from "lucide-react";
 
 const info = [
 	{ title: "BASED IN", description: "Japan" },
@@ -25,6 +26,12 @@ export default function About() {
 					<p className="lg:text-6xl text-5xl md:text-start text-center">
 						Software came later.
 					</p>
+
+					<Music
+						size={450}
+						strokeWidth={1}
+						className="absolute top-20 opacity-5 w-[clamp(220px,35vw,450px)] md:flex hidden"
+					/>
 				</div>
 				<div className="flex-1 flex flex-col gap-5">
 					<div className="flex flex-col gap-4 lg:text-base text-sm md:text-start text-center">
