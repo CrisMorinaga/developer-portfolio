@@ -16,15 +16,15 @@ export default function MainInfo() {
 					className={`d-btn d-btn-md d-btn-primary hover:bg-[#b47440] hover:border-[#b47440] flex flex-1 gap-1 border font-normal text-white`}
 				>
 					<p>View projects</p>
-					<ArrowRight className="size-5" />
+					<ArrowRight className="size-4" />
 				</Link>
 				<Link
 					href={"/Cristopher Morales Resume.pdf"}
 					target="_blank"
-					className={`d-btn d-btn-md border d-btn-ghost flex flex-1 gap-1 rounded-lg font-normal border-muted-foreground text-foreground`}
+					className={`d-btn d-btn-md border d-btn-ghost flex flex-1 gap-1 rounded-lg font-normal border-muted-foreground text-foreground items-center`}
 				>
 					<p>Resume</p>
-					<Download />
+					<Download size={18} />
 				</Link>
 			</div>
 			<p className="text-muted-foreground self-start max-[1100px]:self-center">

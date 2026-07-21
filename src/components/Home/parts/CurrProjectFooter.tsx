@@ -13,7 +13,7 @@ export default function CurrProjectFooter() {
 
 			<Link
 				href={"/projects/rstavern"}
-				className="text-sm text-primary"
+				className="text-sm text-primary hover:underline"
 			>
 				View project ↗
 			</Link>

@@ -3,7 +3,6 @@ import { Montserrat, DM_Serif_Display } from "next/font/google";
 import NavBar from "@/components/NavBars/NavBar";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
-import BottomNavBar from "@/components/NavBars/BottomNavBar";
 import SplashScreen from "@/components/SplashScreen";
 
 import type { Metadata } from "next";
@@ -40,12 +39,15 @@ export default function RootLayout({
 				<body
 					suppressHydrationWarning
 					className={`${montserrat.variable} ${dmSerif.variable}
-            font-mont bg-light w-full min-h-screen dark:bg-dark`}
+          flex min-h-dvh w-full flex-col
+          font-mont bg-light dark:bg-dark`}
 				>
 					<Providers>
 						<SplashScreen />
 						<NavBar />
-						{children}
+
+						<main className="flex flex-1 flex-col">{children}</main>
+
 						<Footer />
 					</Providers>
 				</body>

@@ -163,8 +163,10 @@ export function TimeScene() {
             list-none gap-2
             rounded-xl
             border-2 border-primary
-            hover:bg-black/70
-            group-open:bg-black/70
+            dark:hover:bg-black/70
+            hover:bg-light
+            dark:group-open:bg-black/70
+            group-open:bg-light
             bg-white/80 px-4 py-2
             font-mono text-sm font-semibold
             tabular-nums text-primary
@@ -193,7 +195,7 @@ export function TimeScene() {
             shadow-xl
           "
 				>
-					<li className="d-menu-title">
+					<li className="d-menu-title text-foreground">
 						<span>Try changing the time</span>
 					</li>
 
@@ -301,7 +303,7 @@ function DropdownOption({
 	onSelect,
 }: DropdownOptionProps) {
 	return (
-		<li>
+		<li className="dark:hover:bg-[#262621] hover:bg-[#f0e5e5]">
 			<button
 				type="button"
 				onClick={onSelect}

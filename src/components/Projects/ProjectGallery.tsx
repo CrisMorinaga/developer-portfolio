@@ -3,8 +3,9 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 
-import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import BrowserMockup from "./BrowserMockup";
+
+import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 
 type GalleryImage = {
 	src: string;
@@ -88,7 +89,7 @@ export function ProjectGallery({ images }: Props) {
 				}}
 				className="m-auto h-[95dvh] w-[95vw] max-w-none overflow-hidden bg-transparent p-0 backdrop:bg-black/90"
 			>
-				<div className="relative flex h-full flex-col rounded-xl border border-white/15 bg-[#10110f] p-4 shadow-2xl">
+				<div className="relative flex h-full flex-col rounded-xl border border-white/15 dark:bg-dark bg-light p-4 shadow-2xl">
 					<button
 						type="button"
 						onClick={closeGallery}

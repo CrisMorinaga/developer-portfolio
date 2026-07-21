@@ -20,7 +20,7 @@ export default function SideNavBar({ onClose }: Props) {
 	const router = useRouter();
 	const pathname = usePathname();
 
-	const MotionLink = motion(Link);
+	const MotionLink = motion.create(Link);
 	const { resolvedTheme } = useTheme();
 
 	return (
@@ -29,7 +29,7 @@ export default function SideNavBar({ onClose }: Props) {
 			animate={{ opacity: 1, x: 0 }}
 			exit={{ opacity: 0, x: "-100%" }}
 			transition={{ duration: 0.3, ease: "easeInOut" }}
-			className="flex flex-col items-center fixed top-0 left-0 h-screen w-16 m-0 bg-light dark:bg-dark z-10 border justify-between"
+			className="flex flex-col items-center fixed top-0 left-0 h-dvh w-16 m-0 bg-light dark:bg-dark z-10 border justify-between"
 		>
 			<motion.ul className="flex flex-col items-center justify-center gap-6 mt-6">
 				<motion.li whileHover={{ scale: 1.1 }}>

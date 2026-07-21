@@ -61,7 +61,7 @@ export function PresentationSection() {
 						<div className="flex justify-start">
 							<Image
 								src={"/projects/rstavern/logotext.png"}
-								className="md:w-[400px] h-auto w-[300px] pointer-events-none select-none"
+								className="md:w-[400px] h-auto w-[300px] pointer-events-none select-none dark:bg-dark bg-primary rounded-xl dark:p-0 p-2"
 								alt="rstavern-logo"
 								width={400}
 								height={200}

@@ -132,7 +132,7 @@ export function ContactForm() {
 				<button
 					type="submit"
 					disabled={status === "sending"}
-					className={`d-btn d-btn-md d-btn-primary flex gap-1 rounded-lg font-normal text-foreground hover:bg-[#b47440] hover:border-[#b47440]`}
+					className={`d-btn d-btn-md d-btn-primary flex gap-1 rounded-lg font-normal text-light hover:bg-[#b47440] hover:border-[#b47440]`}
 				>
 					{status === "sending" ? (
 						<>

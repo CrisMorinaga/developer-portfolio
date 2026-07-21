@@ -45,17 +45,15 @@ export default function Projects() {
 						Featured project
 					</h1>
 
-					<section className="max-w-4xl">
-						<div className="flex justify-start">
-							<Image
-								src={"/projects/rstavern/logotext.png"}
-								className="md:w-[250px] h-auto w-[250px] pointer-events-none select-none"
-								alt="rstavern-logo"
-								width={400}
-								height={400}
-							/>
-						</div>
-					</section>
+					<div className="flex justify-start max-w-4xl">
+						<Image
+							src={"/projects/rstavern/logotext.png"}
+							className="md:w-[250px] h-auto w-[250px] pointer-events-none select-none dark:bg-dark bg-primary rounded-xl dark:p-0 p-2"
+							alt="rstavern-logo"
+							width={400}
+							height={400}
+						/>
+					</div>
 
 					<p className="text-[0.9375em] muted-foreground">
 						AI companion for RuneScape

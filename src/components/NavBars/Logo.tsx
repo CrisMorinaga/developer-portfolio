@@ -10,7 +10,7 @@ import LogoBlack from "@/public/CrisMorinagaBlack.webp";
 import LogoWhite from "@/public/CrisMorinagaWhite.webp";
 
 export default function Logo() {
-	const MotionLink = motion(Link);
+	const MotionLink = motion.create(Link);
 	const { resolvedTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 

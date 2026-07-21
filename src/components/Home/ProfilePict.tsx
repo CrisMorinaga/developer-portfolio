@@ -6,7 +6,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 
-const ImageMotion = motion(Image);
+const ImageMotion = motion.create(Image);
 
 export default function ProfilePict() {
 	const [isHovered, setIsHovered] = useState(false);

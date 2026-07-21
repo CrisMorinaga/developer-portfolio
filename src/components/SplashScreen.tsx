@@ -1,50 +1,74 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
+
 import LeftSideBlack from "@/public/SplashScreen/LeftSideBlack.webp";
 import RightSideBlack from "@/public/SplashScreen/RightSideBlack.webp";
 
+const MotionImage = motion.create(Image);
+
 export default function SplashScreen() {
-	const MotionImage = motion(Image);
+	const [isVisible, setIsVisible] = useState(true);
+	const shouldReduceMotion = useReducedMotion();
+	const shouldApplyReducedMotion =
+		shouldReduceMotion && process.env.NODE_ENV === "production";
+
+	useEffect(() => {
+		if (!isVisible) return;
+
+		const previousOverflow = document.body.style.overflow;
+		document.body.style.overflow = "hidden";
+
+		return () => {
+			document.body.style.overflow = previousOverflow;
+		};
+	}, [isVisible]);
+
+	if (!isVisible) return null;
+
+	const transition = shouldApplyReducedMotion
+		? { duration: 0.2, ease: "easeOut" as const }
+		: { delay: 0.35, duration: 1.65, ease: "easeInOut" as const };
 
 	return (
-		<div className="container grid grid-cols-2">
-			<AnimatePresence mode="wait">
-				<motion.div>
-					<motion.div
-						id="splashScreen"
-						key={"left"}
-						initial={{ x: "-50%", width: "100%" }}
-						animate={{ x: -1000, width: "0%" }}
-						transition={{ duration: 2, ease: "easeInOut" }}
-						className="fixed top-0 bottom-0 left-0 col-span-1 h-full z-100 flex justify-end items-center"
-					>
-						<MotionImage
-							priority
-							src={LeftSideBlack}
-							alt="Splash screen"
-							className="h-[500px]"
-						/>
-					</motion.div>
+		<div
+			aria-hidden="true"
+			className="pointer-events-auto fixed inset-0 z-[100] overflow-hidden"
+		>
+			<motion.div
+				initial={{ x: 0 }}
+				animate={
+					shouldApplyReducedMotion ? { opacity: 0 } : { x: "-100%" }
+				}
+				transition={transition}
+				className="absolute inset-y-0 left-0 flex w-1/2 items-center justify-end bg-[#10110e]"
+			>
+				<MotionImage
+					priority
+					src={LeftSideBlack}
+					alt=""
+					className="h-[min(500px,80dvh,90vw)] w-auto max-w-none"
+				/>
+			</motion.div>
 
-					<motion.div
-						id="splashScreen"
-						key={"right"}
-						initial={{ x: "50%", width: "100%", y: "-0.5px" }}
-						animate={{ x: 1000, width: "0%", scale: 1.2 }}
-						transition={{ duration: 2, ease: "easeInOut" }}
-						className="fixed top-0 bottom-0 right-0 col-span-1 h-full z-100 flex items-center"
-					>
-						<MotionImage
-							priority
-							src={RightSideBlack}
-							alt="Splash screen"
-							className="h-[500px]"
-						/>
-					</motion.div>
-				</motion.div>
-			</AnimatePresence>
+			<motion.div
+				initial={{ x: 0 }}
+				animate={
+					shouldApplyReducedMotion ? { opacity: 0 } : { x: "100%" }
+				}
+				transition={transition}
+				onAnimationComplete={() => setIsVisible(false)}
+				className="absolute inset-y-0 right-0 flex w-1/2 items-center justify-start bg-[#10110e]"
+			>
+				<MotionImage
+					priority
+					src={RightSideBlack}
+					alt=""
+					className="h-[min(500px,80dvh,90vw)] w-auto max-w-none"
+				/>
+			</motion.div>
 		</div>
 	);
 }

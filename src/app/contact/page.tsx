@@ -1,22 +1,11 @@
 "use client";
-import { TimeScene } from "@/components/About/TimeScene";
 import { ContactForm } from "@/components/Contact/ContactForm";
 
-const info = [
-	{ title: "BASED IN", description: "Japan" },
-	{ title: "LANGUAGES", description: "Spanish • English • Japanese" },
-	{
-		title: "CERTIFICATION",
-		description: "Fundamental Information Technology Engineer Examination",
-	},
-	{ title: "CURRENTLY", description: "Building RSTavern" },
-];
-
-export default function About() {
+export default function Page() {
 	return (
 		<div className="relative flex w-full flex-col item-center justify-center overflow-hidden lg:px-30 px-15 sm:py-10 py-2 sm:pt-10 pt-0">
 			<section className="flex md:flex-row flex-col md:gap-4 gap-10 items-start justify-center py-5 md:pt-5 pt-3">
-				<div className="flex-1 relative flex flex-col gap-2 md:justify-start justify-center md:self-start self-center">
+				<div className="flex-1 relative flex flex-col md:gap-2 gap-4 md:justify-start justify-center md:self-start self-center">
 					<p className="text-primary md:text-xl text-start">
 						Contact
 					</p>
@@ -30,9 +19,12 @@ export default function About() {
 						{`I'm based in Japan. You can use the form or reach me
 						directly by email.`}
 					</p>
-					<p className="text-primary text-lg md:text-start text-center underline">
+					<a
+						href="mailto:crismorinaga@outlook.com?subject=Portfolio%20Contact&body=Hi%20Cris,%20I%20saw%20your%20portfolio..."
+						className="text-primary text-lg md:text-start text-center hover:underline cursor-pointer"
+					>
 						crismorinaga@outlook.com ↗
-					</p>
+					</a>
 					<p
 						aria-hidden="true"
 						style={{

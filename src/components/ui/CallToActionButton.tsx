@@ -16,7 +16,7 @@ export function CallToActionButton({
 	return (
 		<Link
 			href={href}
-			className={`${className} items-center d-btn d-btn-md d-btn-ghost flex gap-1 border border-muted-foreground text-foreground font-normal`}
+			className={`${className} items-center d-btn d-btn-md d-btn-ghost flex gap-1 border border-muted-foreground text-foreground font-normal dark:hover:bg-[#262621] hover:bg-[#f0e5e5] shadow-none`}
 		>
 			{direction === "right" ? (
 				<>

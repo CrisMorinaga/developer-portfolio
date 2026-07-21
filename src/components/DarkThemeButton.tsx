@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+// import { motion } from "motion/react";
 
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -25,16 +26,20 @@ export default function DarkThemeButton({
 
 	return (
 		<button
+			// whileTap={{ scale: 0.9 }}
+			// whileHover={{ y: -2 }}
 			aria-label="DarkThemeSwitcher"
 			onClick={() =>
 				setTheme(resolvedTheme === "dark" ? "light" : "dark")
 			}
-			className={`flex items-center justify-center rounded-full hover:cursor-pointer ${className}`}
+			className={`flex items-center justify-center rounded-full  hover:cursor-pointer ${className}`}
 		>
 			{resolvedTheme === "dark" ? (
-				<Sun className={strokeBlack ? "stroke-dark" : "stroke-light"} />
+				<Sun
+					className={`hover:stroke-primary ${strokeBlack ? "stroke-dark" : "stroke-light"}`}
+				/>
 			) : (
-				<Moon className="" />
+				<Moon className="hover:stroke-primary" />
 			)}
 		</button>
 	);
