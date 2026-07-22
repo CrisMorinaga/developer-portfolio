@@ -6,7 +6,13 @@ export function ProblemSection() {
 		<div className="py-10">
 			<SectionHeading
 				eyebrow="01 · The problem"
-				title="Quest information exists. Finding the right piece is the problem."
+				title={
+					<h2 className="mt-4 font-display text-4xl md:text-5xl">
+						{"Quest information exists."}{" "}
+						<span className="text-primary text-7xl">Finding</span>{" "}
+						{"the right piece is the problem."}
+					</h2>
+				}
 				description={[
 					"RuneScape has accumulated years of quests, items, and player written documentation. Answering a single contextual question often means moving between wiki pages, forum posts, and video guides, then skimming long sections to find the few lines relevant to the player's current step.",
 

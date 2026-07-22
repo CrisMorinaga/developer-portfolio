@@ -14,7 +14,7 @@ type ProductWalkthroughProps = {
 
 export function ProductWalkthrough({ videos }: ProductWalkthroughProps) {
 	return (
-		<section className="mx-auto max-w-5xl px-6 py-24 lg:px-12">
+		<section className="mx-auto max-w-7xl px-6 py-24 lg:px-12">
 			<SectionHeading
 				eyebrow="05 · Interface"
 				title="Project walkthrough"

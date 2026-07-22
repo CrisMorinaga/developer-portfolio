@@ -6,19 +6,12 @@ const technologyGroups = [
 		items: ["Next.js", "React", "TypeScript"],
 	},
 	{
-		title: "Data and retrieval",
-		items: [
-			"Supabase",
-			"IndexedDB",
-			"PostgreSQL",
-			"Upstash",
-			"Redis",
-			"OpenAI API",
-		],
+		title: "Platform integration",
+		items: ["Alt1 Toolkit API"],
 	},
 	{
-		title: "Authentication and delivery",
-		items: ["Clerk", "Resend", "Streaming responses", "Rate limiting"],
+		title: "Local persistance",
+		items: ["IndexedDB"],
 	},
 ];
 
@@ -27,18 +20,17 @@ export function TechnologiesSection() {
 		<section className="bg-card/30">
 			<div className="mx-auto max-w-7xl px-6 lg:px-12">
 				<SectionHeading
-					eyebrow="06 · Technologies"
+					eyebrow="05 · Technologies"
 					title="Stack"
-					description={[
-						"From streaming and authentication to retrieval and persistence, each tool supports a certain aspect of the application.",
-					]}
 				/>
 
-				<div className="mt-3 grid gap-5 md:grid-cols-3">
+				<div
+					className={`grid gap-5 md:grid-cols-${String(technologyGroups.length)}`}
+				>
 					{technologyGroups.map(({ title, items }) => (
 						<div
 							key={title}
-							className="rounded-2xl border border-border bg-background p-7"
+							className="rounded-2xl border border-primary bg-background p-7"
 						>
 							<h3 className="font-display text-2xl text-foreground">
 								{title}

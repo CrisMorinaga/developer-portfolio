@@ -4,19 +4,23 @@ import { ExternalLink } from "lucide-react";
 
 export function LiveAppButton({
 	href,
+	title,
+	iconSize = 17,
 	className,
 }: {
 	href: string;
+	iconSize?: number;
+	title?: string;
 	className?: string;
 }) {
 	return (
 		<Link
 			href={href}
 			target="_blank"
-			className={`d-btn d-btn-md d-btn-primary flex gap-1 rounded-lg font-normal text-[#f4f0e8] hover:bg-[#b47440] hover:border-[#b47440] items-center  ${className}`}
+			className={`d-btn d-btn-md d-btn-warning dark:d-btn-primary dark:text-white text-warning-content flex gap-1 rounded-lg font-normal items-center  ${className}`}
 		>
-			<ExternalLink size={17} />
-			<p>Live app</p>
+			<ExternalLink size={iconSize} />
+			{title ?? <p>Live app</p>}
 		</Link>
 	);
 }

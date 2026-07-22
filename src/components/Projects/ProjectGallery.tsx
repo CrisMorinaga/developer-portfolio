@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 import BrowserMockup from "./BrowserMockup";
 
@@ -14,10 +15,13 @@ type GalleryImage = {
 };
 
 type Props = {
+	useBrowserMockup?: boolean;
 	images: GalleryImage[];
 };
 
-export function ProjectGallery({ images }: Props) {
+export function ProjectGallery({ useBrowserMockup = true, images }: Props) {
+	const { resolvedTheme } = useTheme();
+
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -59,28 +63,60 @@ export function ProjectGallery({ images }: Props) {
 
 	return (
 		<>
-			<button
-				type="button"
-				onClick={() => openGallery(0)}
-				aria-label="Open Auri's Tavern image gallery"
-				className="group relative min-w-0 w-full block cursor-zoom-in overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-			>
-				<BrowserMockup
-					src={images[0].src}
-					alt={images[0].alt}
-				/>
+			<div className="relative isolate w-full">
+				{/* AURA */}
+				{resolvedTheme === "dark" && (
+					<Image
+						aria-hidden="true"
+						src={images[0].src}
+						alt=""
+						fill
+						sizes="(max-width: 1100px) 100vw, 75vw"
+						className="
+            pointer-events-none object-cover
+            scale-[1.08] saturate-[1.5]
+            blur-[35px] opacity-20
+            sm:scale-[1.12] sm:blur-[55px]
+          "
+					/>
+				)}
 
-				<div className="absolute inset-0 grid place-items-center bg-black/0 transition-colors group-hover:bg-black/35">
-					<span className="flex translate-y-2 items-center gap-2 rounded-lg bg-background/90 px-4 py-2 text-sm font-medium text-foreground opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-						<Maximize2 className="size-4" />
-						View gallery
-					</span>
-				</div>
-			</button>
+				<button
+					type="button"
+					onClick={() => openGallery(0)}
+					aria-label="Open the current project's image gallery"
+					className="group relative z-10 min-w-0 w-full block cursor-zoom-in overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+				>
+					{useBrowserMockup ? (
+						<BrowserMockup
+							src={images[0].src}
+							alt={images[0].alt}
+						/>
+					) : (
+						<div className="relative aspect-[2560/1198] w-full overflow-hidden">
+							<Image
+								alt={images[0].alt}
+								src={images[0].src}
+								fill
+								preload
+								sizes="(max-width: 1100px) 100vw, 75vw"
+								className="object-cover object-top"
+							/>
+						</div>
+					)}
+
+					<div className="absolute inset-0 z-20 grid place-items-center bg-black/0 transition-colors group-hover:bg-black/35">
+						<span className="flex translate-y-2 items-center gap-2 rounded-lg bg-background/90 px-4 py-2 text-sm font-medium text-foreground opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+							<Maximize2 className="size-4" />
+							View gallery
+						</span>
+					</div>
+				</button>
+			</div>
 
 			<dialog
 				ref={dialogRef}
-				aria-label="Auri's Tavern project gallery"
+				aria-label="Current project gallery"
 				onKeyDown={handleKeyDown}
 				onClick={(event) => {
 					if (event.currentTarget === event.target) {

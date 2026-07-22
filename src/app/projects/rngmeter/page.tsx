@@ -1,0 +1,33 @@
+"use client";
+
+import {
+	ProblemSection,
+	SolutionSection,
+	SystemOverview,
+	Limitations,
+	TechnologiesSection,
+	PresentationSection,
+} from "@/components/Projects/rngmeter/caseStudySections";
+
+import { CallToActionButton } from "@/components/ui/CallToActionButton";
+
+export default function Page() {
+	return (
+		<div className="w-full p-5 px-10 flex flex-col gap-4">
+			<PresentationSection />
+			<ProblemSection />
+			<SolutionSection />
+			<SystemOverview />
+			<Limitations />
+			<TechnologiesSection />
+			<div className="flex gap-2 mt-5 md:w-100 w-full">
+				<CallToActionButton
+					className="flex-1"
+					href="/projects"
+					btnTitle="Back to projects"
+					direction="left"
+				/>
+			</div>
+		</div>
+	);
+}

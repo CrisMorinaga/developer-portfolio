@@ -30,7 +30,7 @@ export default function SplashScreen() {
 
 	const transition = shouldApplyReducedMotion
 		? { duration: 0.2, ease: "easeOut" as const }
-		: { delay: 0.35, duration: 1.65, ease: "easeInOut" as const };
+		: { delay: 0.35, duration: 1.2, ease: "easeInOut" as const };
 
 	return (
 		<div

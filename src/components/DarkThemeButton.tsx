@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-// import { motion } from "motion/react";
 
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -26,8 +25,6 @@ export default function DarkThemeButton({
 
 	return (
 		<button
-			// whileTap={{ scale: 0.9 }}
-			// whileHover={{ y: -2 }}
 			aria-label="DarkThemeSwitcher"
 			onClick={() =>
 				setTheme(resolvedTheme === "dark" ? "light" : "dark")
