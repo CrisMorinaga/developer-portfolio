@@ -72,11 +72,7 @@ export function ProjectGallery({ useBrowserMockup = true, images }: Props) {
 						alt=""
 						fill
 						sizes="(max-width: 1100px) 100vw, 75vw"
-						className="
-            pointer-events-none object-cover
-            scale-[1.08] saturate-[1.5]
-            blur-[35px] opacity-20
-            sm:scale-[1.12] sm:blur-[55px]
+						className="pointer-events-none object-cover scale-[1.08] saturate-[1.5] blur-[35px] opacity-20 sm:scale-[1.12] sm:blur-[55px]
           "
 					/>
 				)}
@@ -125,7 +121,7 @@ export function ProjectGallery({ useBrowserMockup = true, images }: Props) {
 				}}
 				className="m-auto h-[95dvh] w-[95vw] max-w-none overflow-hidden bg-transparent p-0 backdrop:bg-black/90"
 			>
-				<div className="relative flex h-full flex-col rounded-xl border border-white/15 dark:bg-dark bg-light p-4 shadow-2xl">
+				<div className="relative flex h-full flex-col rounded-xl border border-white/15 bg-background p-4 shadow-2xl">
 					<button
 						type="button"
 						onClick={closeGallery}

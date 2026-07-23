@@ -1,4 +1,4 @@
-import { RefreshCw, ShieldCheck } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 
 import { SectionHeading } from "./SectionHeading";
 
@@ -32,34 +32,32 @@ const reliabilityItems = [
 
 export function ReliabilitySection() {
 	return (
-		<section className="bg-card/30">
-			<div className="mx-auto max-w-7xl px-6 lg:px-12">
-				<SectionHeading
-					eyebrow="04 · Reliability"
-					title="Handling failures"
-					description={[
-						"Streaming AI interfaces can fail in several places. RSTavern keeps those failures understandable and recoverable.",
-					]}
-				/>
+		<div className="bg-card/30">
+			<SectionHeading
+				eyebrow="04 · Reliability"
+				title="Handling failures"
+				description={[
+					"Streaming AI interfaces can fail in several places. RSTavern keeps those failures understandable and recoverable.",
+				]}
+			/>
 
-				<div className="mt-5 overflow-hidden rounded-2xl border border-border">
-					{reliabilityItems.map(({ label, response }) => (
-						<div
-							key={label}
-							className="grid gap-4 border-b border-border p-6 last:border-b-0 md:grid-cols-[0.8fr_1.2fr] md:p-8"
-						>
-							<div className="flex items-center gap-3 font-semibold text-foreground">
-								<RefreshCw className="size-5 shrink-0 text-primary" />
-								{label}
-							</div>
-
-							<p className="leading-relaxed text-muted-foreground">
-								{response}
-							</p>
+			<div className="mt-5 overflow-hidden rounded-2xl border border-border">
+				{reliabilityItems.map(({ label, response }) => (
+					<div
+						key={label}
+						className="grid gap-4 border-b border-border p-6 last:border-b-0 md:grid-cols-[0.8fr_1.2fr] md:p-8"
+					>
+						<div className="flex items-center gap-3 font-semibold text-foreground">
+							<RefreshCw className="size-5 shrink-0 text-primary" />
+							{label}
 						</div>
-					))}
-				</div>
+
+						<p className="leading-relaxed text-muted-foreground">
+							{response}
+						</p>
+					</div>
+				))}
 			</div>
-		</section>
+		</div>
 	);
 }

@@ -10,7 +10,7 @@ export function SectionHeading({
 	description,
 }: SectionHeadingProps) {
 	return (
-		<section className="border-t border-border px-6 py-20 lg:px-12">
+		<div className="border-t border-border px-6 sm:py-20 py-10 lg:px-12">
 			<div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
 				<header>
 					<p className="text-sm uppercase tracking-[0.2em] text-primary">
@@ -25,7 +25,6 @@ export function SectionHeading({
 					) : (
 						title
 					)}
-
 					{description?.map((d, i) => (
 						<p
 							key={i}
@@ -36,6 +35,6 @@ export function SectionHeading({
 					))}
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 }

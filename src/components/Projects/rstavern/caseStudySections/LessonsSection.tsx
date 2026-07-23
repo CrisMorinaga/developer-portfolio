@@ -30,7 +30,7 @@ const currentLimitations = [
 ];
 
 export const LessonsSection = () => (
-	<section className="mx-auto max-w-7xl px-6 py-10 lg:px-12">
+	<div className="mx-auto max-w-7xl px-6 py-10 lg:px-12">
 		<SectionHeading
 			eyebrow="07 · Notes"
 			title="Notes from development"
@@ -81,5 +81,5 @@ export const LessonsSection = () => (
 				</ul>
 			</aside>
 		</div>
-	</section>
+	</div>
 );

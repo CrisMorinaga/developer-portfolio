@@ -1,18 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 import { Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
 
 type Props = {
 	className?: string;
-	strokeBlack?: boolean;
 };
 
-export default function DarkThemeButton({
-	className = "",
-	strokeBlack,
-}: Props) {
+export default function DarkThemeButton({ className = "" }: Props) {
 	const { resolvedTheme, setTheme } = useTheme();
 
 	const [mounted, setMounted] = useState(false);
@@ -32,9 +28,7 @@ export default function DarkThemeButton({
 			className={`flex items-center justify-center rounded-full  hover:cursor-pointer ${className}`}
 		>
 			{resolvedTheme === "dark" ? (
-				<Sun
-					className={`hover:stroke-primary ${strokeBlack ? "stroke-dark" : "stroke-light"}`}
-				/>
+				<Sun className={`hover:stroke-primary stroke-foreground`} />
 			) : (
 				<Moon className="hover:stroke-primary" />
 			)}

@@ -1,27 +1,51 @@
 import { SectionHeading } from "./SectionHeading";
 
-type WalkthroughVideo = {
-	mp4Src: string;
-	poster?: string;
-	title: string;
-	description: string;
-	ariaLabel: string;
-};
+const walkthroughVideos = [
+	{
+		mp4Src: "/projects/rstavern/videos/QuestQuery.mp4",
+		poster: "/projects/rstavern/videos/QuestQueryPoster.webp",
+		title: "Quest selection and guidance",
+		description:
+			"Quest selection gives subsequent questions an explicit retrieval scope.",
+		ariaLabel: "Selecting A Clockwork Syringe from the message composer",
+	},
+	{
+		mp4Src: "/projects/rstavern/videos/Items.mp4",
+		poster: "/projects/rstavern/videos/ItemsPoster.webp",
+		title: "Interacting with the item information UI",
+		description:
+			"Assistant responses might contain interactable UI to dig deeper into the selected item information.",
+		ariaLabel: "User selects different items to check their information",
+	},
+	{
+		mp4Src: "/projects/rstavern/videos/Followup.mp4",
+		poster: "/projects/rstavern/videos/FollowupPoster.webp",
+		title: "Using the suggested follow-ups",
+		description:
+			"Every response might suggest follow-ups to the current query.",
+		ariaLabel:
+			"User selects the follow up question: 'Where do I start the quest?'.",
+	},
+	{
+		mp4Src: "/projects/rstavern/videos/Branching.mp4",
+		poster: "/projects/rstavern/videos/BranchingPoster.webp",
+		title: "Editing a message and navigating branches",
+		description:
+			"Editing a message creates a new independent branch to use.",
+		ariaLabel: "User edits an existing message and creates a new branch",
+	},
+];
 
-type ProductWalkthroughProps = {
-	videos: WalkthroughVideo[];
-};
-
-export function ProductWalkthrough({ videos }: ProductWalkthroughProps) {
+export function ProductWalkthrough() {
 	return (
-		<section className="mx-auto max-w-7xl px-6 py-24 lg:px-12">
+		<div className="mx-auto max-w-7xl px-6 py-24 lg:px-12">
 			<SectionHeading
 				eyebrow="05 · Interface"
 				title="Project walkthrough"
 			/>
 
 			<div className="space-y-16">
-				{videos.map((video) => (
+				{walkthroughVideos.map((video) => (
 					<figure key={video.mp4Src}>
 						<div className="overflow-hidden rounded-2xl border border-border bg-card">
 							<video
@@ -53,6 +77,6 @@ export function ProductWalkthrough({ videos }: ProductWalkthroughProps) {
 					</figure>
 				))}
 			</div>
-		</section>
+		</div>
 	);
 }

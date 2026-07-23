@@ -6,8 +6,7 @@ const technologiesArr = [
 	"TypeScript",
 	"Supabase",
 	"IndexedDB",
-	"Redis",
-	"Upstash",
+	"Upstash Redis",
 	"Clerk",
 	"Resend",
 	"OpenAI API",
@@ -30,14 +29,14 @@ const auriImages = [
 		caption: "In-character conversation and immersive tavern interface.",
 	},
 ];
-export default function RSTavern() {
+export function RSTavern() {
 	return (
 		<Project
 			header="Featured project"
 			title={
 				<Image
 					src={"/projects/rstavern/logotext.png"}
-					className="md:w-[250px] h-auto w-[250px] pointer-events-none select-none dark:bg-dark bg-primary rounded-xl dark:p-0 p-2"
+					className="md:w-[250px] h-auto w-[250px] pointer-events-none select-none dark:bg-background bg-primary rounded-xl dark:p-0 p-2"
 					alt="rstavern-logo"
 					width={400}
 					height={400}

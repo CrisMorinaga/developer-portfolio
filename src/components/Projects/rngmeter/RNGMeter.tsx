@@ -10,7 +10,7 @@ const projectImgs = [
 	},
 ];
 
-export default function RNGMeter() {
+export function RNGMeter() {
 	return (
 		<Project
 			header=""

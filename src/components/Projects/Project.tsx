@@ -1,10 +1,7 @@
-import { Calendar } from "lucide-react";
-
 import { ProjectGallery } from "./ProjectGallery";
-import { TechnologyCards } from "./TechnologiesCards";
 
-import { LiveAppButton } from "../ui/LiveAppButton";
-import { CallToActionButton } from "../ui/CallToActionButton";
+import { LiveAppButton, CallToActionButton } from "../ui";
+import { Calendar } from "lucide-react";
 
 type ProjectGalleryImg = {
 	src: string;
@@ -92,10 +89,12 @@ export default function Project({
 					<p className="text-[#cd7c3b] text-[14px] ">Technologies</p>
 					<div className="flex gap-4 flex-wrap">
 						{technologiesArr.map((title, i) => (
-							<TechnologyCards
+							<div
 								key={i}
-								title={title}
-							/>
+								className="flex items-center border border-[#afafaf] p-1 px-2 text-muted-foreground rounded-sm text-xs"
+							>
+								{title}
+							</div>
 						))}
 					</div>
 				</div>

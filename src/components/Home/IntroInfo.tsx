@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { ArrowRight, Download } from "lucide-react";
 
-export default function MainInfo() {
+export function IntroInfo() {
 	return (
 		<div className="flex flex-col gap-4 flex-1 items-center justify-center sm:px-7 px-2 max-[1100px]:text-center">
 			<p className="md:text-base text-sm leading-relaxed text-muted-foreground ">
@@ -19,7 +19,7 @@ export default function MainInfo() {
 					<ArrowRight className="size-4" />
 				</Link>
 				<Link
-					href={"/Cristopher Morales Resume.pdf"}
+					href={"/Cristopher_Morales_Resume_2026.pdf"}
 					target="_blank"
 					className={`d-btn d-btn-md border d-btn-ghost flex flex-1 gap-1 rounded-lg font-normal border-muted-foreground text-foreground items-center`}
 				>

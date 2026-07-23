@@ -1,9 +1,9 @@
-import { LiveAppButton } from "@/components/ui/LiveAppButton";
-import { SectionHeading } from "./SectionHeading";
+import { LiveAppButton } from "@/components/ui";
+import { SectionHeading } from "@/components/Projects/parts";
 
 export function Limitations() {
 	return (
-		<section className="mx-auto max-w-7xl px-6 py-24 lg:px-12">
+		<div className="py-10">
 			<SectionHeading
 				eyebrow="04 · Limitations"
 				title={
@@ -29,6 +29,6 @@ export function Limitations() {
 				className="w-fit! justify-self-center d-btn-xl!"
 				href="https://rngmeter.vercel.app/demo"
 			/>
-		</section>
+		</div>
 	);
 }

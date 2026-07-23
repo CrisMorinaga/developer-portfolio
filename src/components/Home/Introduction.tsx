@@ -1,4 +1,4 @@
-export function MainPresentation() {
+export function Introduction() {
 	return (
 		<div className="flex flex-col flex-1 gap-5 items-start justify-center max-[1100px]:items-center">
 			<p className="text-primary md:text-base text-xs">
@@ -10,6 +10,7 @@ export function MainPresentation() {
 					.
 				</span>
 				<p
+					aria-hidden="true"
 					style={{
 						WebkitTextStroke: "1px hsl(var(--foreground))",
 					}}
@@ -18,6 +19,7 @@ export function MainPresentation() {
 					C
 				</p>
 				<p
+					aria-hidden="true"
 					style={{
 						WebkitTextStroke: "1px hsl(var(--foreground))",
 					}}

@@ -1,6 +1,7 @@
 "use client";
-
 import { FormEvent, useState } from "react";
+
+import { FormField } from "./FormField";
 import { ArrowUpRight, Check, Loader } from "lucide-react";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
@@ -28,7 +29,6 @@ export function ContactForm() {
 					name: formData.get("name"),
 					email: formData.get("email"),
 					message: formData.get("message"),
-					website: formData.get("website"), // Honeypot
 				}),
 			});
 
@@ -43,7 +43,11 @@ export function ContactForm() {
 							"Something went wrong. Please be sure to fill each field correctly.",
 						);
 					case "Too many messages. Please try again later.":
-						throw new Error(message);
+						const retryAfterXSeconds =
+							response.headers.get("Retry-After");
+						throw new Error(
+							`Too many messages. Please try again after ${retryAfterXSeconds} seconds.`,
+						);
 					default:
 						throw new Error("The message could not be sent.");
 				}
@@ -100,30 +104,7 @@ export function ContactForm() {
 						minLength={10}
 						maxLength={3000}
 						placeholder="Write your message..."
-						className="
-              mt-3 min-h-15 w-full resize-y
-              border-0 border-b border-border
-              bg-transparent px-0 py-3
-              text-foreground outline-none
-              transition-colors duration-200
-              placeholder:text-muted-foreground/70
-              focus:border-primary
-            "
-					/>
-				</div>
-
-				{/* Campo invisible para bloquear bots simples */}
-				<div
-					aria-hidden="true"
-					className="absolute -left-[9999px]"
-				>
-					<label htmlFor="website">Website</label>
-					<input
-						id="website"
-						name="website"
-						type="text"
-						tabIndex={-1}
-						autoComplete="off"
+						className="mt-3 min-h-15 w-full resize-y border-0 border-b border-border bg-transparent px-0 py-3 text-foreground outline-none transition-colors duration-200 placeholder:text-muted-foreground/70 focus:border-primary"
 					/>
 				</div>
 			</div>
@@ -132,7 +113,7 @@ export function ContactForm() {
 				<button
 					type="submit"
 					disabled={status === "sending"}
-					className={`d-btn d-btn-md d-btn-primary flex gap-1 rounded-lg font-normal text-light hover:bg-[#b47440] hover:border-[#b47440]`}
+					className={`d-btn d-btn-md d-btn-primary flex gap-1 rounded-lg font-normal text-white hover:bg-[#b47440] hover:border-[#b47440]`}
 				>
 					{status === "sending" ? (
 						<>
@@ -172,56 +153,5 @@ export function ContactForm() {
 				</div>
 			</div>
 		</form>
-	);
-}
-
-type FormFieldProps = {
-	id: string;
-	label: string;
-	type?: "text" | "email";
-	placeholder: string;
-	autoComplete?: string;
-	minLength?: number;
-	maxLength?: number;
-};
-
-function FormField({
-	id,
-	label,
-	type = "text",
-	placeholder,
-	autoComplete,
-	minLength,
-	maxLength,
-}: FormFieldProps) {
-	return (
-		<div>
-			<label
-				htmlFor={id}
-				className="block text-sm font-semibold text-foreground"
-			>
-				{label}
-			</label>
-
-			<input
-				id={id}
-				name={id}
-				type={type}
-				required
-				minLength={minLength}
-				maxLength={maxLength}
-				autoComplete={autoComplete}
-				placeholder={placeholder}
-				className="
-          mt-3 w-full
-          border-0 border-b border-border
-          bg-transparent px-0 py-3
-          text-foreground outline-none
-          transition-colors duration-200
-          placeholder:text-muted-foreground/70
-          focus:border-primary
-        "
-			/>
-		</div>
 	);
 }

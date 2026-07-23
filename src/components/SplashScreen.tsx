@@ -33,10 +33,7 @@ export default function SplashScreen() {
 		: { delay: 0.35, duration: 1.2, ease: "easeInOut" as const };
 
 	return (
-		<div
-			aria-hidden="true"
-			className="pointer-events-auto fixed inset-0 z-[100] overflow-hidden"
-		>
+		<div className="pointer-events-auto fixed inset-0 z-[100] overflow-hidden">
 			<motion.div
 				initial={{ x: 0 }}
 				animate={

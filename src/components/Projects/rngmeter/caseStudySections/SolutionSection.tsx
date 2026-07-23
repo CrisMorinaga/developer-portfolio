@@ -1,5 +1,5 @@
 import { CoinFlipProbability } from "../CoinFlipProbability";
-import { SectionHeading } from "./SectionHeading";
+import { SectionHeading } from "@/components/Projects/parts";
 
 export function SolutionSection() {
 	return (

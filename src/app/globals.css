@@ -10,9 +10,7 @@
 	default: true;
 	--color-base-100: #151613;
 	--color-base-200: #262621;
-	/* --color-base-300: white; */
 	--color-primary: #a16839;
-	/* --color-secondary: teal; */
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -51,13 +49,6 @@
 	--color-ring: hsl(var(--ring));
 	--color-splash: hsl(var(--splash));
 
-	/*
-   * Legacy aliases. Keep temporarily while migrating old components.
-   */
-	--color-dark: #151613;
-	--color-light: #f8f4ed;
-	--color-primaryDark: hsl(var(--primary));
-
 	--radius-lg: var(--radius);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-sm: calc(var(--radius) - 4px);
@@ -65,53 +56,27 @@
 
 @layer base {
 	:root {
-		/*
-     * Warm ivory canvas
-     * Approx. #f4f0e8
-     */
-		--background: 40 35% 93%;
+		--background: 38 44% 95%;
 		--foreground: 34 10% 10%;
 
-		/*
-     * Muted surfaces and secondary text
-     */
 		--muted: 35 29% 88%;
 		--muted-foreground: 32 9% 40%;
 
-		/*
-     * Floating surfaces
-     */
 		--popover: 40 43% 97%;
 		--popover-foreground: 34 10% 10%;
 
-		/*
-     * Cards
-     */
 		--card: 40 43% 97%;
 		--card-foreground: 34 10% 10%;
 
-		/*
-     * Warm neutral borders
-     */
 		--border: 35 23% 79%;
 		--input: 35 23% 79%;
 
-		/*
-     * Copper primary
-     * Approx. #9f6135
-     */
 		--primary: 42 95% 41%;
 		--primary-foreground: 33 100% 97%;
 
-		/*
-     * Neutral secondary
-     */
 		--secondary: 35 25% 86%;
 		--secondary-foreground: 30 17% 15%;
 
-		/*
-     * Soft copper accent
-     */
 		--accent: 30 46% 84%;
 		--accent-foreground: 26 52% 24%;
 
@@ -125,53 +90,27 @@
 	}
 
 	.dark {
-		/*
-     * Charcoal canvas
-     * Approx. #10110f
-     */
-		--background: 90 6% 6%;
+		--background: 80 8% 8%;
 		--foreground: 36 22% 88%;
 
-		/*
-     * Muted surfaces and text
-     */
 		--muted: 80 6% 10%;
 		--muted-foreground: 34 10% 68%;
 
-		/*
-     * Floating surfaces
-     */
 		--popover: 80 7% 8%;
 		--popover-foreground: 36 22% 88%;
 
-		/*
-     * Cards
-     */
 		--card: 80 7% 8%;
 		--card-foreground: 36 22% 88%;
 
-		/*
-     * Subtle warm borders
-     */
 		--border: 33 14% 16%;
 		--input: 33 14% 16%;
 
-		/*
-     * Warm copper
-     * Approx. #c6874f
-     */
 		--primary: 29 51% 54%;
 		--primary-foreground: 32 45% 6%;
 
-		/*
-     * Secondary charcoal surface
-     */
 		--secondary: 38 14% 11%;
 		--secondary-foreground: 34 18% 83%;
 
-		/*
-     * Dark copper surface
-     */
 		--accent: 27 29% 13%;
 		--accent-foreground: 29 52% 76%;
 
@@ -197,18 +136,6 @@
 
 @layer components {
 	.sidebar-icon {
-		@apply size-5 cursor-pointer text-muted-foreground transition-colors;
-	}
-
-	.sidebar-tooltip {
-		@apply text-xs font-bold text-foreground;
-	}
-
-	.icon-div {
-		@apply flex flex-col items-center;
-	}
-
-	#splashScreen {
-		@apply bg-splash text-foreground;
+		@apply size-5 cursor-pointer text-foreground transition-colors;
 	}
 }

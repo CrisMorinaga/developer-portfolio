@@ -9,7 +9,7 @@ import {
 	PresentationSection,
 } from "@/components/Projects/rngmeter/caseStudySections";
 
-import { CallToActionButton } from "@/components/ui/CallToActionButton";
+import { CallToActionButton } from "@/components/ui";
 
 export default function Page() {
 	return (

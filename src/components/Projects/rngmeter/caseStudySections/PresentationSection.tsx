@@ -1,65 +1,62 @@
 import Image from "next/image";
-
 import { useTheme } from "next-themes";
-import { LiveAppButton } from "@/components/ui/LiveAppButton";
 
-import { Database, GitBranch, Layers } from "lucide-react";
+import {
+	PresentationHighlights,
+	BreadCrumbs,
+} from "@/components/Projects/parts";
+import { LiveAppButton } from "@/components/ui";
 
 const highlights = [
 	{
 		title: "PROBABILITY CALCULATION",
 		description:
 			"Uses binomial distribution to predict the current drop rate probability according to the player's kill count.",
-		icon: <Layers />,
 	},
 	{
 		title: "PERSISTENT STATE",
 		description:
 			"Saves progress, tracked bosses, drop rate probability, and kill count even after the user closes the game.",
-		icon: <Database />,
 	},
 	{
 		title: "AUTOMATIC STATE UPDATES",
 		description:
 			"Tracked state is automatically updated while the player plays the game. ",
-		icon: <GitBranch />,
 	},
 ];
 
 export function PresentationSection() {
 	const { resolvedTheme } = useTheme();
-	const shouldUseLightImg = resolvedTheme === "light";
-	const logoSrc = shouldUseLightImg
+
+	const isLightTheme = resolvedTheme === "light";
+
+	const logoSrc = isLightTheme
 		? "/projects/rngmeter/logolight.png"
 		: "/projects/rngmeter/logoDark.png";
 
+	const breadCrumbRoutes = [
+		{ name: "Home", href: "/" },
+		{ name: "Projects", href: "/projects" },
+		{ name: "RNGMeter", href: "" },
+	];
+
 	return (
 		<>
-			<section className="d-breadcrumbs text-sm">
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="/projects">Projects</a>
-					</li>
-					<li>RNGMeter</li>
-				</ul>
-			</section>
+			<BreadCrumbs routes={breadCrumbRoutes} />
 
-			<section className="px-6 pb-10 md:pt-10 pt-10 lg:px-12">
+			<div className="px-6 pb-10 md:pt-10 pt-10 lg:px-12">
 				<div className="mx-auto max-w-7xl flex flex-col gap-8 md:items-start items-center ">
 					<p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
 						Oct 2025 - Dec 2025
 					</p>
 
-					<section className="max-w-4xl">
+					<div className="max-w-4xl">
 						<div className="flex justify-start">
 							<h1 className="font-display leading-relaxed text-6xl">
 								RNGMeter
 							</h1>
 						</div>
-					</section>
+					</div>
 
 					<p className="max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl md:text-start text-center">
 						{`Building a RuneScape probability tracker that
@@ -81,40 +78,19 @@ export function PresentationSection() {
 						<p>Source - Private repository</p>
 					</div>
 				</div>
-			</section>
+			</div>
 
-			<section className="w-full">
-				<div className="flex justify-center w-full">
-					<Image
-						src={logoSrc}
-						alt="rstavern-logo"
-						width={100}
-						height={100}
-						className="pointer-events-none select-none"
-					/>
-				</div>
-			</section>
+			<div className="flex justify-center w-full">
+				<Image
+					src={logoSrc}
+					alt="rstavern-logo"
+					width={100}
+					height={100}
+					className="pointer-events-none select-none"
+				/>
+			</div>
 
-			<section className="px-6 pb-16 lg:px-12">
-				<div
-					className={`mx-auto grid max-w-7xl gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-${highlights.length}`}
-				>
-					{highlights.map((highlight) => (
-						<div
-							key={highlight.title}
-							className="bg-card p-6"
-						>
-							<p className="mt-4 font-medium">
-								{highlight.title}
-							</p>
-
-							<p className="mt-2 text-sm text-muted-foreground">
-								{highlight.description}
-							</p>
-						</div>
-					))}
-				</div>
-			</section>
+			<PresentationHighlights highlights={highlights} />
 		</>
 	);
 }

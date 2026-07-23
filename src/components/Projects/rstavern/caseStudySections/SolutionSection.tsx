@@ -1,4 +1,4 @@
-import { SolutionFlow } from "../../parts/SolutionFlow";
+import { SolutionFlow } from "../SolutionFlow";
 
 import { SectionHeading } from "./SectionHeading";
 

@@ -1,8 +1,14 @@
-"use client";
-import { TimeScene } from "@/components/About/TimeScene";
-import { YoutubeIcon } from "@/components/Home/Icons";
-import { Music } from "lucide-react";
 import Link from "next/link";
+
+import { TimeScene } from "@/components/About";
+import { YoutubeIcon } from "@/components/ui/SocialIcons";
+
+import { Music } from "lucide-react";
+
+type InfoItem = {
+	title: string;
+	description: string;
+};
 
 const info = [
 	{ title: "BASED IN", description: "Japan" },
@@ -14,36 +20,52 @@ const info = [
 	{ title: "CURRENTLY", description: "Building RSTavern" },
 ];
 
+function AboutFacts({ items }: { items: InfoItem[] }) {
+	return (
+		<div className="flex flex-col">
+			{items.map(({ title, description }) => (
+				<div key={title}>
+					<div className="d-divider m-0 before:bg-muted-foreground/20 after:bg-muted-foreground/20" />
+					<div className="flex items-center justify-start gap-2 lg:text-sm text-xs">
+						<p className="flex-1 text-muted-foreground flex-wrap">
+							{title}
+						</p>
+						<p className="flex-1/2 flex-wrap">{description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	);
+}
+
 export default function About() {
 	return (
-		<div className="flex w-full min-w-screen flex-col item-center justify-center lg:px-30 px-15 sm:py-10 py-5 sm:pt-10 pt-0">
-			<section className="flex md:flex-row flex-col md:gap-4 gap-10 items-center justify-center py-5">
-				<div className="flex flex-col gap-2 flex-1 font-display leading-relaxed">
+		<div className="flex w-full flex-col items-center justify-center lg:px-30 px-15 sm:py-10 py-5 sm:pt-10 pt-0">
+			<div className="flex md:flex-row flex-col md:gap-4 gap-10 items-center justify-center py-5">
+				<div className="flex flex-col gap-2 flex-1 leading-relaxed">
 					<p className="text-primary lg:text-xl md:text-lg md:text-start text-center">
 						About me
 					</p>
-					<p className="lg:text-6xl text-5xl md:text-start text-center">
-						Music came first.
-					</p>
-					<p className="lg:text-6xl text-5xl md:text-start text-center">
-						Software came later.
-					</p>
+					<h1 className="text-center font-display text-5xl md:text-start lg:text-6xl">
+						<span className="block">Music came first.</span>
+						<span className="block">Software came later.</span>
+					</h1>
 
-					{/* <Link
+					<Link
 						href="https://www.youtube.com/watch?v=8-3RiKe1jfk&t=1s"
 						target="_blank"
 						rel="noreferrer"
 						className="group relative z-10 inline-flex items-center gap-2 text-foreground/80 transition hover:text-primary md:self-start self-center"
 						aria-label="YouTube Video"
 					>
-						<span className="font-mont text-center group-hover:underline sm:text-start">
-							A window into one of my piano{" "}
+						<span className="font-mont sm:text-start text-sm text-center group-hover:underline">
+							{`A window into one of my piano `}
 							<span className="inline-flex items-center gap-2 whitespace-nowrap group-hover:underline">
-								performances
+								{`performances · Chopin, 2020`}
 								<YoutubeIcon className="size-5 shrink-0" />
 							</span>
 						</span>
-					</Link> */}
+					</Link>
 
 					<Music
 						size={450}
@@ -61,34 +83,19 @@ export default function About() {
               worked in music education. `}
 						</p>
 						<p>
-							I began programming in 2023 and now work primarily
+							{`I began programming in 2023 and now work primarily
 							with TypeScript, React, Next.js, and backend
 							services. My recent work includes RSTavern, a
-							context-aware RuneScape companion.
+							context-aware RuneScape companion.`}
 						</p>
 					</div>
-
-					<div className="flex flex-col">
-						{info.map((info, i) => (
-							<div key={i}>
-								<div className="d-divider m-0 before:bg-muted-foreground/20 after:bg-muted-foreground/20" />
-								<div className="flex items-center justify-start gap-2 lg:text-sm text-xs">
-									<p className="flex-1 text-muted-foreground flex-wrap">
-										{info.title}
-									</p>
-									<p className="flex-1/2 flex-wrap">
-										{info.description}
-									</p>
-								</div>
-							</div>
-						))}
-					</div>
+					<AboutFacts items={info} />
 				</div>
-			</section>
+			</div>
 
 			<div className="d-divider before:bg-muted-foreground/20 after:bg-muted-foreground/20" />
 
-			<section className="flex md:flex-row flex-col gap-2">
+			<div className="flex md:flex-row flex-col gap-2">
 				<div className="flex flex-col flex-1 md:text-start text-center">
 					<p className="text-primary lg:text-base text-sm">
 						A small corner of the site
@@ -102,7 +109,7 @@ export default function About() {
 					</p>
 				</div>
 				<TimeScene />
-			</section>
+			</div>
 		</div>
 	);
 }

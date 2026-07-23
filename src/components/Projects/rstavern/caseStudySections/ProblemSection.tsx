@@ -1,4 +1,4 @@
-import FragmentedInformationDiagram from "../../parts/FragmentedInformationDiagram";
+import FragmentedInformationDiagram from "../FragmentedInformationDiagram";
 import { SectionHeading } from "./SectionHeading";
 
 export function ProblemSection() {

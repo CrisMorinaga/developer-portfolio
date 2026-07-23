@@ -32,7 +32,7 @@ const sources = [
 
 const FragmentedInformationDiagram = () => {
 	return (
-		<div>
+		<>
 			<div className="grid gap-4 sm:grid-cols-4">
 				{sources.map(({ title, description, icon: Icon }) => (
 					<div
@@ -62,7 +62,7 @@ const FragmentedInformationDiagram = () => {
 				{/* Horizontal connector */}
 				<span className="absolute left-0 right-0 top-4 h-px bg-border" />
 
-				{/* Three source connectors */}
+				{/* Four source connectors */}
 				<span className="absolute left-0 top-0 h-4 w-px bg-border" />
 				<span className="absolute left-[32%] top-0 h-4 w-px -translate-x-1/2 bg-border" />
 				<span className="absolute right-[30%] top-0 h-4 w-px -translate-x-1/2 bg-border" />
@@ -95,7 +95,7 @@ const FragmentedInformationDiagram = () => {
 					before they can understand what to do next.
 				</p>
 			</div>
-		</div>
+		</>
 	);
 };
 

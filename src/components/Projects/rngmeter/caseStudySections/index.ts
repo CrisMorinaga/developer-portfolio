@@ -1,4 +1,3 @@
-export { SectionHeading } from "./SectionHeading";
 export { Limitations } from "./Limitations";
 export { TechnologiesSection } from "./TechnologiesSection";
 export { SystemOverview } from "./SystemOverview";

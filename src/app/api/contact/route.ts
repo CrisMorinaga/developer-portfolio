@@ -1,52 +1,18 @@
-import { getRateLimitIdentifier, ratelimit } from "@/rate-limit/EmailRateLimit";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+import { Form } from "@/zod-validation/emailFormValidation";
+import { getRateLimitIdentifier, ratelimit } from "@/rate-limit/EmailRateLimit";
+
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-type ContactRequest = {
-	name?: unknown;
-	email?: unknown;
-	message?: unknown;
-	website?: unknown;
-};
 
 export async function POST(request: Request) {
 	try {
-		const body = (await request.json()) as ContactRequest;
+		const body = await request.json();
 
-		const name = typeof body.name === "string" ? body.name.trim() : "";
+		const parsedBody = await Form.safeParseAsync(body);
 
-		const email =
-			typeof body.email === "string"
-				? body.email.trim().toLowerCase()
-				: "";
-
-		const message =
-			typeof body.message === "string" ? body.message.trim() : "";
-
-		const website =
-			typeof body.website === "string" ? body.website.trim() : "";
-
-		/*
-		 * Honeypot:
-		 * los usuarios reales nunca completan este campo.
-		 * Respondemos como si hubiera funcionado para no dar pistas al bot.
-		 */
-		if (website) {
-			return NextResponse.json({ success: true });
-		}
-
-		if (
-			name.length < 2 ||
-			name.length > 80 ||
-			!EMAIL_PATTERN.test(email) ||
-			email.length > 254 ||
-			message.length < 10 ||
-			message.length > 3000
-		) {
+		if (!parsedBody.success) {
 			return NextResponse.json(
 				{
 					success: false,
@@ -89,6 +55,8 @@ export async function POST(request: Request) {
 				},
 			);
 		}
+
+		const { name, email, message } = parsedBody.data;
 
 		const { data, error } = await resend.emails.send({
 			from: process.env.CONTACT_FROM,

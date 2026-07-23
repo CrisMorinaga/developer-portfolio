@@ -22,7 +22,7 @@ const dmSerif = DM_Serif_Display({
 
 export const metadata: Metadata = {
 	title: `Cristopher's Portfolio`,
-	description: "Created using Next js",
+	description: "Portfolio of a software developer based in Japan.",
 };
 
 export default function RootLayout({
@@ -31,27 +31,21 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<>
-			<html
-				lang="en"
-				suppressHydrationWarning
+		<html
+			lang="en"
+			suppressHydrationWarning
+		>
+			<body
+				className={`${montserrat.variable} ${dmSerif.variable}
+          flex min-h-dvh w-full flex-col font-mont`}
 			>
-				<body
-					suppressHydrationWarning
-					className={`${montserrat.variable} ${dmSerif.variable}
-          flex min-h-dvh w-full flex-col
-          font-mont bg-light dark:bg-dark`}
-				>
-					<Providers>
-						<SplashScreen />
-						<NavBar />
-
-						<main className="flex flex-1 flex-col">{children}</main>
-
-						<Footer />
-					</Providers>
-				</body>
-			</html>
-		</>
+				<Providers>
+					<SplashScreen />
+					<NavBar />
+					<main className="flex flex-1 flex-col">{children}</main>
+					<Footer />
+				</Providers>
+			</body>
+		</html>
 	);
 }

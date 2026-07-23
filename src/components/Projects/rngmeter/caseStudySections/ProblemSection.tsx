@@ -1,4 +1,4 @@
-import { SectionHeading } from "./SectionHeading";
+import { SectionHeading } from "@/components/Projects/parts";
 
 export function ProblemSection() {
 	return (
