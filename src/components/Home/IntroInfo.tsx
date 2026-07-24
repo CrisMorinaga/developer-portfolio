@@ -6,9 +6,9 @@ export function IntroInfo() {
 	return (
 		<div className="flex flex-col gap-4 flex-1 items-center justify-center sm:px-7 px-2 max-[1100px]:text-center">
 			<p className="md:text-base text-sm leading-relaxed text-muted-foreground ">
-				I build full-stack web applications with TypeScript, React, and
-				Next.js, with a particular interest in front-end systems and
-				reliable AI integrations.
+				I build web applications with TypeScript, React, Next.js, and
+				PostgreSQL. I especially enjoy working on front-end systems and
+				AI features.
 			</p>
 			<div className="flex gap-4 items-center justify-start w-full">
 				<Link

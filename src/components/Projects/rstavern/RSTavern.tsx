@@ -44,7 +44,7 @@ export function RSTavern() {
 			}
 			subtitle="AI companion for RuneScape"
 			creationDate="Dec 2025 - Present"
-			description="Contextual quest guidance powered by multi-stage retrieval and structured conversation memory."
+			description="A quest companion that retrieves relevant information and keeps track of the selected quest, current step, and previous questions"
 			liveAppUrl="https://www.rstavernchat.com/"
 			callToActionRoute="/projects/rstavern"
 			galleryImgs={auriImages}

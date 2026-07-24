@@ -10,17 +10,17 @@ const highlights = [
 	{
 		title: "HYBRID RETRIEVAL",
 		description:
-			"Combines intent routing, BM25 keyword retrieval, and semantic search to find context relevant to the selected quest and question.",
+			"Uses intent routing, BM25, and semantic search to find information related to the selected quest and the player's question.",
 	},
 	{
 		title: "STRUCTURED CONTEXT",
 		description:
-			"Stores quest, step, item, and intent metadata per turn so ambiguous follow-ups can be resolved without relying solely on chat history.",
+			"Saves the quest, current step, referenced items, and intent with each turn. This gives follow-up questions enough context without depending only on chat history.",
 	},
 	{
 		title: "BRANCHING CHAT",
 		description:
-			"Editing an earlier message creates a new branch, allowing users to explore alternatives without losing the original path.",
+			"Editing an earlier message starts a new branch without deleting the original conversation.",
 	},
 	{
 		title: "PERSISTENT CHAT STATE",

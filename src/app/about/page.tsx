@@ -80,13 +80,12 @@ export default function About() {
 						<p>
 							{`I'm a Chilean full-stack developer based in Japan.
               Before moving into software, I trained as a pianist and
-              worked in music education. `}
+              worked as a music teacher. `}
 						</p>
 						<p>
-							{`I began programming in 2023 and now work primarily
-							with TypeScript, React, Next.js, and backend
-							services. My recent work includes RSTavern, a
-							context-aware RuneScape companion.`}
+							{`I started programming in 2023 and now mainly work with TypeScript,
+              React, Next.js, and PostgreSQL. I'm currently building RSTavern, a
+              RuneScape quest companion.`}
 						</p>
 					</div>
 					<AboutFacts items={info} />
