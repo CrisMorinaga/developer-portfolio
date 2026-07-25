@@ -29,9 +29,6 @@ export function TechnologiesSection() {
 				<SectionHeading
 					eyebrow="06 · Technologies"
 					title="Stack"
-					description={[
-						"From streaming and authentication to retrieval and persistence, each tool supports a certain aspect of the application.",
-					]}
 				/>
 
 				<TechnologyCards technologyGroups={technologyGroups} />

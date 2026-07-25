@@ -3,29 +3,30 @@ import {
 	BookOpen,
 	MessageSquare,
 	PlaySquare,
-	Search,
 	Bot,
+	BadgeAlert,
 } from "lucide-react";
 
 const sources = [
 	{
 		title: "Wiki pages",
-		description: "Complete, but often lengthy.",
+		description: "Detailed, but often much longer than needed.",
 		icon: BookOpen,
 	},
 	{
 		title: "Forum posts",
-		description: "Useful, but answers are scattered across discussions.",
+		description: "Useful answers buried inside long discussions.",
 		icon: MessageSquare,
 	},
 	{
 		title: "Video guides",
-		description: "Helpful, but difficult to search quickly.",
+		description: "Helpful when you have time to watch, but slow to search.",
 		icon: PlaySquare,
 	},
 	{
-		title: "General purpose chatbots",
-		description: "Fast search, but unreliable information.",
+		title: "General-purpose chatbots",
+		description:
+			"Quick to answer, but not reliable enough for quest guidance.",
 		icon: Bot,
 	},
 ];
@@ -80,15 +81,11 @@ const FragmentedInformationDiagram = () => {
 			</div>
 
 			<div className="mx-auto max-w-xl rounded-xl border border-primary/40 bg-primary/5 p-6 text-center">
-				<Search className="mx-auto mb-3 size-6 text-primary" />
+				<BadgeAlert className="mx-auto mb-3 size-6 text-primary" />
 
 				<p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">
-					THE REAL PROBLEM
+					THE PROBLEM
 				</p>
-
-				<h3 className="mt-2 text-xl font-semibold text-foreground">
-					Time consuming searching and cross-referencing
-				</h3>
 
 				<p className="mt-3 text-sm leading-relaxed text-muted-foreground">
 					Players must combine information from multiple sources

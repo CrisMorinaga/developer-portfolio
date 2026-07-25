@@ -12,7 +12,7 @@ export function SystemOverview() {
 					</h2>
 				}
 				description={[
-					`Each request moves through a structured pipeline that combines conversation state, retrieval, and deterministic metadata before Auri responds.`,
+					"Before Auri answers, RSTavern combines conversation state, retrieved quest information, and metadata from previous turns.",
 				]}
 			/>
 

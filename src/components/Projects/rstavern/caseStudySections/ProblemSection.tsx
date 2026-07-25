@@ -14,9 +14,9 @@ export function ProblemSection() {
 					</h2>
 				}
 				description={[
-					"RuneScape has accumulated years of quests, items, and documentation written by players. Answering a single contextual question often means moving between wiki pages, forum posts, and video guides, then skimming long sections to find the few lines relevant to the player's current step.",
+					"RuneScape has years of quests, items, and player-written documentation spread across wikis, forum posts, and video guides. Finding the answer to one specific question can mean opening several sources and skipping through a lot of information just to find the part that matches the player's current step.",
 
-					"General-purpose chatbots have a different limitation: they can be unreliable even when relevant information is available. Language models can still drift from that information and invent item names, locations, requirements, or quest steps that sound plausible but are wrong. For a quest helper, that kind of confident mistake is worse than no answer at all.",
+					"General-purpose chatbots have a different problem. Even when they are given the right information, they can still ignore parts of it or fill in missing details with something that sounds believable. That can lead to invented item names, locations, requirements, or quest steps. For a quest helper, a confident wrong answer is often worse than simply saying it does not know.",
 				]}
 			/>
 			<FragmentedInformationDiagram />

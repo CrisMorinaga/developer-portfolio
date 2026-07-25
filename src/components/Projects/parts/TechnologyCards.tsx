@@ -8,10 +8,8 @@ export function TechnologyCards({
 }: {
 	technologyGroups: TechnologyGroup[];
 }) {
-	const gridColsQty = `grid-cols-${String(technologyGroups.length)}`;
-
 	return (
-		<div className={`grid gap-5 md:${gridColsQty}`}>
+		<div className={`grid gap-5 md:grid-cols-3`}>
 			{technologyGroups.map(({ title, items }) => (
 				<div
 					key={title}

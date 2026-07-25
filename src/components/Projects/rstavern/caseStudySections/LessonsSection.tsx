@@ -4,29 +4,29 @@ const developmentNotes = [
 	{
 		title: "More context was not always better",
 		description:
-			"Earlier versions relied more heavily on conversation history. Storing quest, step, item, and intent data explicitly made follow-up behavior easier to reason about and test.",
+			"Early versions relied heavily on conversation history, but more context did not always lead to better answers. Keeping the current quest, step, item, and intent as structured data made follow-up questions much easier to handle and test.",
 	},
 	{
-		title: "The model needs a clear way not to answer",
+		title: "The model needs to know when to stop",
 		description:
-			'When retrieval does not provide enough reliable context, the model may still fill the gaps with a plausible response. Giving Auri a short instruction such as "Do not answer yet; ask whether the player means X" proved more reliable than supplying additional but weakly related context.',
+			'When retrieval does not find enough reliable information, the model can still invent an answer that sounds convincing. In those cases, a direct instruction such as "Do not answer yet; ask whether the player means X" worked better than adding more loosely related context.',
 	},
 	{
 		title: "Known state should stay in code",
 		description:
-			"When the selected quest or current step is already known, resolving that state before generation produces more consistent results than asking the model to infer it again.",
+			"If the application already knows the selected quest or current step, there is little reason to ask the model to figure it out again. Resolving that state in code made the answers more predictable and removed unnecessary guesswork.",
 	},
 	{
-		title: "Different failures need different recovery paths",
+		title: "Not every failure should be handled the same way",
 		description:
-			"An interrupted stream, a retrieval miss, and unavailable remote storage are separate problems. Handling them individually made recovery behavior clearer for both the application and the user.",
+			"An interrupted response, missing retrieval results, and unavailable remote storage are different problems. Treating them separately made it easier to show the right message and recover without forcing the user to restart everything.",
 	},
 ];
 
 const currentLimitations = [
-	"Quest coverage still depends on structured source data and remains the main scaling constraint.",
-	"The retrieval evaluation set needs more paraphrases, vague follow-ups, and item-acquisition queries.",
-	"Long conversation branches will eventually require compaction instead of carrying their full history.",
+	"Quest and item coverage depends on structured source data. Since that data can change after game updates, keeping it accurate will require ongoing maintenance.",
+	"Long conversation branches will eventually need to be summarized or compacted instead of keeping their entire history.",
+	"AI models have improved a lot, but hallucinations are still a problem without a complete solution.",
 ];
 
 export const LessonsSection = () => (

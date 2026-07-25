@@ -6,27 +6,27 @@ const reliabilityItems = [
 	{
 		label: "Temporary API failure",
 		response:
-			"Retries the request with backoff while keeping the current conversation and selected quest intact.",
+			"Retries the request with backoff without losing the current conversation or selected quest.",
 	},
 	{
 		label: "Interrupted response stream",
 		response:
-			"Stops the incomplete stream, preserves the existing conversation, and gives the user a clear way to retry.",
+			"Stops the incomplete response, keeps the messages already in the conversation, and lets the user try again.",
 	},
 	{
-		label: "Insufficient retrieval context",
+		label: "Not enough retrieval context",
 		response:
-			"Gives Auri failure-specific instructions so she can ask a targeted clarification question while remaining in character.",
+			"Gives Auri a specific instruction to ask for clarification instead of guessing, while still responding in character.",
 	},
 	{
 		label: "Ambiguous follow-up",
 		response:
-			"Uses quest-step, item, and intent metadata from previous turns to resolve vague questions such as “What should I do next?”",
+			"Uses the quest step, referenced items, and previous intent to understand vague questions such as “What should I do next?”",
 	},
 	{
 		label: "Rate limit reached",
 		response:
-			"Stops the request before generation and clearly tells the user when they can try again.",
+			"Stops the request before calling the model and tells the user when they can try again.",
 	},
 ];
 
@@ -37,7 +37,7 @@ export function ReliabilitySection() {
 				eyebrow="04 · Reliability"
 				title="Handling failures"
 				description={[
-					"Streaming AI interfaces can fail in several places. RSTavern keeps those failures understandable and recoverable.",
+					"AI streaming can fail in several places. RSTavern tries to recover without losing the conversation or leaving the user wondering what happened.",
 				]}
 			/>
 

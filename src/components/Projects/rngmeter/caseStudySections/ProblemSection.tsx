@@ -15,7 +15,7 @@ export function ProblemSection() {
 				description={[
 					"RuneScape provides item drop rates and boss kill counts, but it does not link them. Just knowing that an item has a drop rate of 1 in 100 does not tell you much about what 20, 100, or 300 kills without the drop actually mean.",
 
-					"This makes drop rates easy to get wrong. Reaching 100 kills does not mean that a 1-in-100 item was guaranteed to drop (the cumulative probability is only about 63%). At 300 kills, however, approximately 95% of players should have seen it at least once.",
+					"This also makes drop rates easy to get wrong. Reaching 100 kills does not mean that a 1-in-100 item was guaranteed to drop (the cumulative probability is only about 63%). At 300 kills, however, approximately 95% of players should have seen it at least once.",
 
 					"Players can calculate these values manually, but doing so means leaving the game, finding the correct drop rate, recording every attempt, and recalculating it as the kill count changes. There is no visual indication of how the current kill streak compares with the underlying probability.",
 				]}
