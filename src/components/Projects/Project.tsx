@@ -21,6 +21,7 @@ type ProjectProps = {
 	useBrowserMockup?: boolean;
 	galleryImgs: ProjectGalleryImg[];
 	technologiesArr: string[];
+	featuresArr: string[];
 };
 export default function Project({
 	header,
@@ -30,6 +31,7 @@ export default function Project({
 	description,
 	galleryImgs,
 	technologiesArr,
+	featuresArr,
 	liveAppUrl,
 	appCTABtnTitle,
 	callToActionRoute,
@@ -43,7 +45,7 @@ export default function Project({
 
 					<div className="flex justify-start max-w-4xl">{title}</div>
 
-					<p className="text-[0.9375em] muted-foreground max-[500px]:text-center">
+					<p className="text-[0.9375em] muted-foreground max-[700px]:text-center">
 						{subtitle}
 					</p>
 
@@ -60,7 +62,7 @@ export default function Project({
 
 					<div className="d-divider before:bg-muted-foreground/20 after:bg-muted-foreground/20" />
 
-					<p className="text-[15px] text-muted-foreground w-[80%] text-start max-[1100px]:text-center">
+					<p className="text-[15px] text-muted-foreground text-start max-[1100px]:text-center">
 						{description}
 					</p>
 					<div className="flex gap-2 mt-5">
@@ -84,11 +86,25 @@ export default function Project({
 					images={galleryImgs}
 				/>
 			</div>
-			<div className="flex gap-2 items-start w-full">
+			<div className="flex gap-2 items-center justify-start w-full">
 				<div className="flex flex-col gap-2">
 					<p className="text-[#cd7c3b] text-[14px] ">Technologies</p>
 					<div className="flex gap-4 flex-wrap">
 						{technologiesArr.map((title, i) => (
+							<div
+								key={i}
+								className="flex items-center border border-[#afafaf] p-1 px-2 text-muted-foreground rounded-sm text-xs"
+							>
+								{title}
+							</div>
+						))}
+					</div>
+				</div>
+				<div className="d-divider d-divider-horizontal ml-0"></div>
+				<div className="flex flex-col gap-2">
+					<p className="text-[#cd7c3b] text-[14px]">Features</p>
+					<div className="flex gap-4 flex-wrap">
+						{featuresArr.map((title, i) => (
 							<div
 								key={i}
 								className="flex items-center border border-[#afafaf] p-1 px-2 text-muted-foreground rounded-sm text-xs"

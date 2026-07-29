@@ -12,23 +12,32 @@ const technologiesArr = [
 	"OpenAI API",
 ];
 
-const auriImages = [
+const featuresArr = [
+	"Hybrid retrieval",
+	"Branching conversations",
+	"Persistent & recoverable state",
+];
+
+const projectImages = [
 	{
-		src: "/projects/rstavern/auri-quest-guidance.png",
-		alt: "Auri's Tavern providing structured quest item guidance",
+		src: "/projects/rstavern/auri-quest-guidance.webp",
+		alt: "Auri providing structured quest item guidance",
 		caption: "Contextual quest guidance with suggested actions.",
 	},
 	{
-		src: "/projects/rstavern/auri-item.png",
+		src: "/projects/rstavern/auri-item.webp",
 		alt: "User interacting with the item information UI",
-		caption: "User interacting with the item information UI",
+		caption:
+			"Retrieved quests items open into interactive information view",
 	},
 	{
-		src: "/projects/rstavern/auri-greeting.png",
+		src: "/projects/rstavern/branching.webp",
 		alt: "Auri greeting the player inside the tavern",
-		caption: "In-character conversation and immersive tavern interface.",
+		caption:
+			"Editing an earlier message creates a new conversation branch while preserving the original.",
 	},
 ];
+
 export function RSTavern() {
 	return (
 		<Project
@@ -42,13 +51,14 @@ export function RSTavern() {
 					height={400}
 				/>
 			}
-			subtitle="AI companion for RuneScape"
+			subtitle="Context-aware quest companion for RuneScape"
 			creationDate="Dec 2025 - Present"
-			description="A quest companion that retrieves relevant information and keeps track of the selected quest, current step, and previous questions"
+			description="A quest companion that retrieves information relevant to the player's current quest and step, supports branching conversations, and preserves chat state across sessions and interrupted requests."
 			liveAppUrl="https://www.rstavernchat.com/"
 			callToActionRoute="/projects/rstavern"
-			galleryImgs={auriImages}
+			galleryImgs={projectImages}
 			technologiesArr={technologiesArr}
+			featuresArr={featuresArr}
 		/>
 	);
 }

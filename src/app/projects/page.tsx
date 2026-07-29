@@ -13,7 +13,7 @@ export default function Projects() {
 	const projectsArr = [<RSTavern key={0} />, <RNGMeter key={1} />];
 
 	return (
-		<div className="relative pt-5">
+		<div className="relative pt-5 overflow-hidden">
 			<ProjectNav
 				projectsArrLength={projectsArr.length}
 				currProjectIdx={currProjectIdx}

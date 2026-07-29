@@ -2,9 +2,15 @@ import Project from "../Project";
 
 const technologiesArr = ["Next.js", "TypeScript", "IndexedDB", "Alt1"];
 
+const featuresArr = [
+	"Alt1 integration",
+	"Persistent state",
+	"Automatic state updates",
+];
+
 const projectImgs = [
 	{
-		src: "/projects/rngmeter/main-cover.png",
+		src: "/projects/rngmeter/main-cover.webp",
 		alt: "RNGMeter app showing the 3 drops selected for the current boss.",
 		caption: "RNGMeter with 3 usual drops for the selected boss.",
 	},
@@ -28,6 +34,7 @@ export function RNGMeter() {
 			callToActionRoute="/projects/rngmeter"
 			galleryImgs={projectImgs}
 			technologiesArr={technologiesArr}
+			featuresArr={featuresArr}
 		/>
 	);
 }
