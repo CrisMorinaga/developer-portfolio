@@ -14,8 +14,9 @@ const technologiesArr = [
 
 const featuresArr = [
 	"Hybrid retrieval",
-	"Branching conversations",
+	"Interaction-driven relationships",
 	"Persistent & recoverable state",
+	"Branching conversations",
 ];
 
 const projectImages = [
@@ -29,6 +30,12 @@ const projectImages = [
 		alt: "User interacting with the item information UI",
 		caption:
 			"Retrieved quests items open into interactive information view",
+	},
+	{
+		src: "/projects/rstavern/negative-interaction.webp",
+		alt: "User interacts negatively with Auri",
+		caption:
+			"Interactions with Auri dynamically update your relationship with her.",
 	},
 	{
 		src: "/projects/rstavern/branching.webp",
@@ -53,7 +60,7 @@ export function RSTavern() {
 			}
 			subtitle="Context-aware quest companion for RuneScape"
 			creationDate="Dec 2025 - Present"
-			description="A quest companion that retrieves information relevant to the player's current quest and step, supports branching conversations, and preserves chat state across sessions and interrupted requests."
+			description="A quest companion that retrieves information relevant to the player's current quest and step, supports branching conversations, preserves chat state across sessions and interrupted requests, and dynamically evolves its relationship with the player."
 			liveAppUrl="https://www.rstavernchat.com/"
 			callToActionRoute="/projects/rstavern"
 			galleryImgs={projectImages}

@@ -34,6 +34,14 @@ const walkthroughVideos = [
 			"Editing a message creates a new independent branch to use.",
 		ariaLabel: "User edits an existing message and creates a new branch",
 	},
+	{
+		mp4Src: "/projects/rstavern/videos/Negative_interaction.mp4",
+		poster: "/projects/rstavern/videos/negativeInteractionPoster.webp",
+		title: "Interactions dynamically update your relationship",
+		description:
+			"Depending on the player's interaction the change could be positive or negative.",
+		ariaLabel: "User reacting negatively to an assistant message",
+	},
 ];
 
 export function ProductWalkthrough() {
@@ -46,7 +54,10 @@ export function ProductWalkthrough() {
 
 			<div className="space-y-16">
 				{walkthroughVideos.map((video) => (
-					<figure key={video.mp4Src}>
+					<figure
+						key={video.mp4Src}
+						className="flex flex-col items-center"
+					>
 						<div className="overflow-hidden rounded-2xl border border-border bg-card">
 							<video
 								autoPlay
@@ -56,7 +67,7 @@ export function ProductWalkthrough() {
 								preload="metadata"
 								poster={video.poster}
 								aria-label={video.ariaLabel}
-								className="aspect-video w-full object-cover"
+								className="w-full object-cover"
 							>
 								<source
 									src={video.mp4Src}

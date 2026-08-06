@@ -13,19 +13,19 @@ const highlights = [
 			"Uses intent routing, BM25, and semantic search to find information related to the selected quest and the player's question.",
 	},
 	{
-		title: "STRUCTURED CONTEXT",
+		title: "TURN-LEVEL CONTEXT",
 		description:
-			"Saves the quest, current step, referenced items, and intent with each turn. This gives follow-up questions enough context without depending only on chat history.",
-	},
-	{
-		title: "BRANCHING CHAT",
-		description:
-			"Editing an earlier message starts a new branch without deleting the original conversation.",
+			"Stores the active quest, current step, referenced items, and intent with every turn, enabling reliable follow-ups without replaying the entire chat.",
 	},
 	{
 		title: "PERSISTENT CHAT STATE",
 		description:
-			"Messages and branches persist across sessions. Interrupted requests can be retried without losing the existing conversation.",
+			"Messages and conversation state persist across sessions. Interrupted requests can be retried without losing the existing conversation.",
+	},
+	{
+		title: "INTERACTION-DRIVEN RELATIONSHIPS",
+		description:
+			"Character relationships persist across sessions and evolve based on each interaction, allowing the user's behavior to influence future responses.",
 	},
 ];
 

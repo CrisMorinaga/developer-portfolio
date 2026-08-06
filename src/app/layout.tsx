@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+
 import { Montserrat, DM_Serif_Display } from "next/font/google";
 
 import NavBar from "@/components/NavBars/NavBar";
@@ -39,6 +41,7 @@ export default function RootLayout({
 				className={`${montserrat.variable} ${dmSerif.variable}
           flex min-h-dvh w-full flex-col font-mont`}
 			>
+				<Analytics />
 				<Providers>
 					<SplashScreen />
 					<NavBar />
